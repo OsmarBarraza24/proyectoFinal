@@ -1,41 +1,44 @@
 <?php 
-$target_path = "uploads/";
-$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) { echo "El archivo ". basename( $_FILES['uploadedfile']['name']). " ha sido subido";
-} else{
-echo "Ha ocurrido un error, trate de nuevo!";
+$target_path = "";
+if($_POST['tipo'] == "imagenes"){
+$target_path = "imagenes/";
+}else{
+    header("Location:index.php");
+}
+$msg = " ";
+$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+
+$uploadedfileload=true;
+
+$uploadedfile_size=$_FILES['uploadedfile']['size'];
+$uploadedFileType = $_FILES['uploadedfile']['type'];
+
+echo $_FILES["uploadedfile"]["name"]. "<br>" . $uploadedFileType;
+
+
+if ($uploadedfile_size>1000000){
+
+$msg = $msg . "El archivo es mayor que 1MB, debes reduzcirlo antes de subirlo<BR>";
+
+$uploadedfileload=false;
+
 }
 
-$uploadedfileload="true";
-
-$uploadedfile_size=$_FILES['uploadedfile'][size];
-
-echo $_FILES[uploadedfile][name];
-
-if ($_FILES[uploadedfile][size]>1000000){
-
-$msg=$msg."El archivo es mayor que 1MB, debes reduzcirlo antes de subirlo<BR>";
-
-$uploadedfileload="false";
-
-}
-
-if (!($_FILES[uploadedfile][type] =="image/jpeg" OR $_FILES[uploadedfile][type] =="image/gif")){
-    $msg=$msg." Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
+if (!($uploadedFileType == "image/jpeg" OR $uploadedFileType =="image/gif")){
+    $msg = $msg . " Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
     
-    $uploadedfileload="false";
+    $uploadedfileload=false;
 }
 
 
-$file_name=$_FILES[uploadedfile][name];
+$file_name=$_FILES["uploadedfile"]["name"];
 
 $add="uploads/$file_name";
 
-if($uploadedfileload=="true"){
+if($uploadedfileload){
 
-if(move_uploaded_file ($_FILES[uploadedfile][tmp_name], $add)){
+if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 echo " Ha sido subido satisfactoriamente";
-}else{
-    echo "Error al subir el archivo";
 }
 
 }else{
