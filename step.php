@@ -1,6 +1,48 @@
 <?php 
 session_start();
 include('conexion/conexionBd.php');
+
+$target_path = "imagenes/";
+$msg = " ";
+$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+
+$uploadedfileload=true;
+
+$uploadedfile_size=$_FILES['uploadedfile']['size'];
+$uploadedFileType = $_FILES['uploadedfile']['type'];
+
+echo $_FILES["uploadedfile"]["name"]. "<br>" . $uploadedFileType;
+
+
+if ($uploadedfile_size>1000000){
+
+$msg = $msg . "El archivo es mayor que 1MB, debes reduzcirlo antes de subirlo<BR>";
+
+$uploadedfileload=false;
+
+}
+
+if (!($uploadedFileType == "image/jpeg" OR $uploadedFileType =="image/gif")){
+    $msg = $msg . " Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
+    
+    $uploadedfileload=false;
+}
+
+
+$file_name=$_POST["id"];
+
+$add="imagenes/$file_name";
+
+if($uploadedfileload){
+
+if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
+    echo " Ha sido subido satisfactoriamente";
+}
+
+}else{
+    echo $msg;
+}
+
 if(isset($_POST['sent'])) {
 
 	foreach($_POST as $calzon => $caca){		
@@ -9,9 +51,10 @@ if(isset($_POST['sent'])) {
 
 
 	if(!isset($error)) {
-		$queryUserUpdate = sprintf("UPDATE tblUsuarios SET nombre = '%s', apellidos = '%s' WHERE id = ".$_SESSION['userId'],
+		$queryUserUpdate = sprintf("UPDATE tblUsuarios SET nombre = '%s', apellidos = '%s' foto = '%s'WHERE id = ".$_SESSION['userId'],
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
+      mysql_real_escape_string(trim($file_name)),
       mysql_real_escape_string(trim($_POST["id"]))
 		);
 
@@ -121,6 +164,7 @@ if(isset($_POST['sent'])) {
             <div class="row justify-content-center">
                <div class="col-12-xs">
                  <input type="submit" value="Confirmar" name="sent">
+                 <input type="file" value="Subir archivo">
                  <input type="hidden" name="id" value="<?php $_SESSION["userId"];?>">
         </form>
       </div>
