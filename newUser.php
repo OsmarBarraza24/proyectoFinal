@@ -70,8 +70,8 @@ if(isset($_POST['sent'])) {
         <h1>Registra tus datos</h1>
 		<?php 
 		if(isset($error)){
-			if(isset($error)){
-				echo "<h4 style='color:red;text-align:center'> <i> El chuy es gei </i> </h4>";
+			foreach($error as $value){
+				echo "<h4 style='color:red;text-align:center'> $value </h4>";
 			}
 		}
 		?>
