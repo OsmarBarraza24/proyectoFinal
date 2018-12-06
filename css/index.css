@@ -1,0 +1,83 @@
+body{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.login-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    padding: 60px 40px;
+    background: rgba(0, 0, 0, 0.466);
+    box-shadow: 0 15px 20px rgba(0,0,0, 0.2);
+    border-radius: 18px;
+}
+
+.login-container h1{
+    margin: 0 0 40px;
+    padding:0;
+    text-align: center;
+    font-size: 24px;
+    color: #f1f1f1;
+    user-select: none;
+}
+
+.login-container .input{
+position: relative;
+margin: 20px 0;
+}
+
+.login-container .input input{
+    outline: none;
+    height: 20px;
+    padding: 10px;
+    box-sizing: 100%;
+    width: 100%;
+    border: 0.5px solid #f1f1f1;
+    color: white;
+    background: transparent;
+    font-size: 18px;
+    border-radius: 18px;
+}
+
+input[type="submit"]{
+    padding: 8px;
+    height: 40px;
+    width: 100%;
+    margin: auto 10px;
+    border-radius: 18px;
+    border: 1px solid #4F759B; 
+    background: #4F759B;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    transition: 500ms;
+}
+
+input[type="submit"]:hover{
+   background-color: #4F759B;
+   border: 1px solid #4F759B; 
+   cursor: pointer;
+}
+
+.forgot{
+text-align: center;
+padding-top: 20px;
+}
+
+.forgot a{
+    color: white;
+    transition: 500ms;
+    text-decoration: none;
+
+}
+
+.forgot a:hover{
+    color:#33CD3A;
+}
+

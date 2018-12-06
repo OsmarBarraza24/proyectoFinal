@@ -1,0 +1,38 @@
+i{
+	color: rgb(95, 143, 190);
+}
+.navbar-brand{
+	height: 20% ;
+}
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.bg-nav{
+	background-color: #1C3144;
+}
+
+.center{
+    display: block;
+    margin: 10px auto;
+}
+
+.fa-user{
+   color: grey;
+}
+
+.navbar form button{
+    color:#A2AEBB;
+    background-color: #4F759B;
+    border-color: #4F759B;
+}
+
+.navbar form button:hover{
+    background-color:rgb(95, 143, 190);
+    border-color: #4F759B;
+}
+
+.fa-search{
+color: white;
+}
