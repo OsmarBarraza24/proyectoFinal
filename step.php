@@ -2,7 +2,15 @@
 session_start();
 include('conexion/conexionBd.php');
 
-$target_path = "imagenes/";
+
+
+if(isset($_POST['sent'])) {
+
+	foreach($_POST as $calzon => $caca){		
+			if($caca == "") { $error[] = "La caja $calzon debe contener un valor"; }		
+	}
+
+  $target_path = "imagenes/";
 $msg = " ";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
@@ -11,7 +19,6 @@ $uploadedfileload=true;
 $uploadedfile_size=$_FILES['uploadedfile']['size'];
 $uploadedFileType = $_FILES['uploadedfile']['type'];
 
-echo $_FILES["uploadedfile"]["name"]. "<br>" . $uploadedFileType;
 
 
 if ($uploadedfile_size>1000000){
@@ -43,15 +50,8 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     echo $msg;
 }
 
-if(isset($_POST['sent'])) {
-
-	foreach($_POST as $calzon => $caca){		
-			if($caca == "") { $error[] = "La caja $calzon debe contener un valor"; }		
-	}
-
-
 	if(!isset($error)) {
-		$queryUserUpdate = sprintf("UPDATE tblUsuarios SET nombre = '%s', apellidos = '%s' foto = '%s'WHERE id = ".$_SESSION['userId'],
+		$queryUserUpdate = sprintf("UPDATE tblUsuarios SET nombre = '%s', apellidos = '%s' foto = '%s'WHERE id = '%d'",
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
@@ -128,8 +128,8 @@ if(isset($_POST['sent'])) {
     </div>
     <div class="row justify-content-center">
       <div class="col-12-xs">
-        <a href=""><img class="circle" src="https://png2.kisspng.com/20180422/bke/kisspng-user-login-mobile-phones-password-user-5adcc37905c036.8550724215244174010236.png"
-            alt=""></a>
+        <img class="circle" src="https://png2.kisspng.com/20180422/bke/kisspng-user-login-mobile-phones-password-user-5adcc37905c036.8550724215244174010236.png"
+            alt="">
 
       </div>
     </div>
@@ -139,7 +139,11 @@ if(isset($_POST['sent'])) {
     <div class="row justify-content-center">
       <div class="col-12-xs">
         <br>
-        <input type="submit" value="Subir foto">
+        <div class="upload-btn-wrapper">
+              <form action="step.php" method="post">
+                <button class="btn">Subir foto</button>
+                <input type="file" name="myfile"/>
+        </div>
       </div>
     </div>
     <br>
@@ -155,7 +159,6 @@ if(isset($_POST['sent'])) {
       ?>
     <div class="row justify-content-center">
       <div class="col-12-xs">
-        <form action="step.php" method="post">
           <label for="nombre">Nombre</label> <br>
           <input type="text" name="nombre"> <br>
           <label for="apellido">Apellidos</label> <br>
@@ -164,7 +167,6 @@ if(isset($_POST['sent'])) {
             <div class="row justify-content-center">
                <div class="col-12-xs">
                  <input type="submit" value="Confirmar" name="sent">
-                 <input type="file" value="Subir archivo">
                  <input type="hidden" name="id" value="<?php $_SESSION["userId"];?>">
         </form>
       </div>

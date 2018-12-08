@@ -70,3 +70,34 @@ input[type=submit]{
     border: 1px solid #4F759B;
     user-select: none;
 }
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .btn {
+    border-radius: 20px;
+    font-size: 18px;
+    height: 50px;
+    color: white;
+    width: 250px;
+    background: #4F759B;
+    cursor: pointer;
+    transition: 500ms;
+    border: 1px solid #4F759B;
+    user-select: none;
+    transition: 500ms;
+    cursor: pointer;
+  }
+
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }

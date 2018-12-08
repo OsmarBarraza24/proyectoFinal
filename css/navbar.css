@@ -5,9 +5,8 @@ i{
 	height: 20% ;
 }
 .navbar-nav.navbar-center {
-    position: absolute;
-    left: 50%;
-    transform: translatex(-50%);
+    display: flex;
+    justify-content: center;
 }
 .bg-nav{
 	background-color: #1C3144;
