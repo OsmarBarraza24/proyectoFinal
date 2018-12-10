@@ -51,6 +51,12 @@
              <img src="img/user.png" alt="" class = "circle">
             </span>
             </div>
+            <div class="col-xl-6">
+                <label for="">Nombre</label> <br>
+                <input type="text"> <br>
+                <label for="">Apellidos</label> <br>
+                <input type="text"> <br>
+            </div>
          </div>
     </div>
 
