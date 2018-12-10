@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include('conexion/conexionBd.php');
-
+$pattern = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$';
 if(isset($_POST["sent"])) {
 	// Validamos los campos vacios
 	foreach ($_POST as $calzon => $caca) {
