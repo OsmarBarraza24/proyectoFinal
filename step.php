@@ -165,14 +165,14 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
           <label for="apellido">Apellidos</label> <br>
           <input type="text" name="apellidos"> <br>
           <label for="genero">Genero</label> <br>
-          <div class="custom-select" style="width:200px;">
+          <div class="selector">
           <select name="genero">
            <option name="HOMBRE" value="0">Hombre</option>
             <option name="MUJER" value="1">Mujer</option>
              <option name="NA" value="2">Prefiero no especificar</option>
          </select>
           </div>        
-          <div class="container"> <br>
+          <div class="container"><br>
             <div class="row justify-content-center">
                <div class="col-12-xs">
                  <input type="submit" value="Confirmar" name="sent">
