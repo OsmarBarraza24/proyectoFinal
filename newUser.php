@@ -17,7 +17,7 @@ if(isset($_POST['sent'])) {
 	// Validamos si el correo proporcionado está siendo utilizado
 
 	//Definimos el query para evaluar el correo contra la BD
-	$queryCheckEmail = sprintf("SELECT id FROM tblUsuarios WHERE email = '%s'",
+	$queryCheckEmail = sprintf("SELECT id FROM tblUsuarios WHERE correo = '%s'",
 			mysql_real_escape_string(trim($_POST["email"]))
 	);
 
@@ -32,7 +32,7 @@ if(isset($_POST['sent'])) {
 	// Si estamos libres de errores procedemos a la inserción de los datos en la BD
 	if(!isset($error)) {
 		// Definimos la consulta que se va a ejecutar para guardar los datos del usuario
-		$queryUserRegister = sprintf("INSERT INTO tblUsuarios (email,password) VALUES ('%s', '%s')",
+		$queryUserRegister = sprintf("INSERT INTO tblUsuarios (correo, contrasenia) VALUES ('%s', '%s')",
 			mysql_real_escape_string(trim($_POST["email"])),
 			mysql_real_escape_string(trim($_POST["password"]))
 		);
