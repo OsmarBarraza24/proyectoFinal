@@ -131,7 +131,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
       <span id = "span">
         
         
-            </span>
+      </span>
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
         <div class="upload-btn-wrapper">
               <form action="step.php" method="post">
                 <button class="btn">Subir foto</button>
-                <input type="file" name="myfile"/>
+                <input type="file" name="myfile" id="files"/>
         </div>
       </div>
     </div>
