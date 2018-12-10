@@ -45,15 +45,14 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     echo " Ha sido subido satisfactoriamente";
 }
 
-}else{
-    echo $msg;
 }
 
 	if(!isset($error)) {
-		$queryUserUpdate = sprintf("UPDATE tblUsuarios SET nombre = '%s', apellidos = '%s' foto = '%s'WHERE id = '%d'",
+		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s' foto = '%s' genero = '%s'WHERE id = '%d'",
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
+      mysql_real_escape_string(trim($_POST["genero"])),
       mysql_real_escape_string(trim($_POST["id"]))
 		);
 
@@ -61,7 +60,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 
    
 		if($resQueryUserUpdate) {
-			header("Location:step.php");
+			header("Location:music.php");
 		} 
 
 	}
@@ -141,7 +140,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
         <div class="upload-btn-wrapper">
               <form action="step.php" method="post">
                 <button class="btn">Subir foto</button>
-                <input type="file" name="myfile" id="files"/>
+                <input type="file" name="uploadedfile" id="files"/>
         </div>
       </div>
     </div>
