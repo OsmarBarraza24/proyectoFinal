@@ -17,7 +17,7 @@ if(isset($_POST['sent'])) {
 	// Validamos si el correo proporcionado está siendo utilizado
 
 	//Definimos el query para evaluar el correo contra la BD
-	$queryCheckEmail = sprintf("SELECT id FROM tblUsuarios WHERE correo = '%s'",
+	$queryCheckEmail = sprintf("SELECT id FROM usuario WHERE correo = '%s'",
 			mysql_real_escape_string(trim($_POST["email"]))
 	);
 
@@ -32,18 +32,27 @@ if(isset($_POST['sent'])) {
 	// Si estamos libres de errores procedemos a la inserción de los datos en la BD
 	if(!isset($error)) {
 		// Definimos la consulta que se va a ejecutar para guardar los datos del usuario
-		$queryUserRegister = sprintf("INSERT INTO tblUsuarios (correo, contrasenia) VALUES ('%s', '%s')",
+		$queryUserRegister = sprintf("INSERT INTO usuario (correo, contrasenia) VALUES ('%s', '%s')",
 			mysql_real_escape_string(trim($_POST["email"])),
 			mysql_real_escape_string(trim($_POST["password"]))
 		);
-
-		$userData = mysql_fetch_assoc($resQueryUserUpdate);
-	/* 	$_SESSION["userId"] = $userData["id"]; */
-		// Ejecutamos el query
 		$resQueryUserRegister = mysql_query($queryUserRegister, $conexionBd) or die("No se pudo guardar el usuario en la BD... Revisa tu código plomo.");
+
+		
+
 
 		// Si los datos fueron guardados con exito hacemos una redirección
 		if($resQueryUserRegister) {
+			$queryGetUser = sprintf("SELECT (id) FROM usuario WHERE correo = '%s' AND contrasenia = '%s'",
+				mysql_real_escape_string(trim($_POST["email"])),
+				mysql_real_escape_string(trim($_POST["password"]))
+			);
+
+			$resQueryGetUser = mysql_query($queryGetUser, $conexionBd) or die("No se ejecutó el query en la base de datos");
+			if(mysql_num_rows($resQueryGetUser)){
+				$userData = mysql_fetch_asocc($resQueryGetUser);
+				$_SESSION['idUsuario'] = $userData['id'];
+			}
 			header("Location:step.php");
 		} 
 
