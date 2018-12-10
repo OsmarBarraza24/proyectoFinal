@@ -50,7 +50,7 @@ if(isset($_POST['sent'])) {
 
 			$resQueryGetUser = mysql_query($queryGetUser, $conexionBd) or die("No se ejecutó el query en la base de datos");
 			if(mysql_num_rows($resQueryGetUser)){
-				$userData = mysql_fetch_asocc($resQueryGetUser);
+				$userData = mysql_fetch_assoc($resQueryGetUser);
 				$_SESSION['idUsuario'] = $userData['id'];
 			}
 			header("Location:step.php");
