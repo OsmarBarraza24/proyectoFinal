@@ -1,9 +1,9 @@
 <?php 
 
-$servidor = "localhost";
-$baseDatos = "spatifai";
+$servidor = "192.168.0.11";
+$baseDatos = "gentlefy";
 $usuarioBd = "root";
-$passwordBd = "";
+$passwordBd = "perron11";
 
 $conexionBd = mysql_connect($servidor , $usuarioBd, $passwordBd) or trigger_error(mysql_error(), E_USER_ERROR);
 
