@@ -11,7 +11,6 @@ if(isset($_POST['sent'])) {
 	}
 
   $target_path = "imagenes/";
-$msg = " ";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
 $uploadedfileload=true;
@@ -23,20 +22,20 @@ $uploadedFileType = $_FILES['uploadedfile']['type'];
 
 if ($uploadedfile_size>1000000){
 
-$msg = $msg . "El archivo es mayor que 1MB, debes reduzcirlo antes de subirlo<BR>";
+$error[] = "El archivo es mayor que 1MB, debes reduzcirlo antes de subirlo<BR>";
 
 $uploadedfileload=false;
 
 }
 
 if (!($uploadedFileType == "image/jpeg" OR $uploadedFileType =="image/gif")){
-    $msg = $msg . " Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
+  $error[] = " Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
     
     $uploadedfileload=false;
 }
 
 
-$file_name=$_POST["id"];
+$file_name="imagenes/$file_name";
 
 $add="imagenes/$file_name";
 
