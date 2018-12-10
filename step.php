@@ -128,9 +128,10 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     </div>
     <div class="row justify-content-center">
       <div class="col-12-xs">
-        <img class="circle" src="https://png2.kisspng.com/20180422/bke/kisspng-user-login-mobile-phones-password-user-5adcc37905c036.8550724215244174010236.png"
-            alt="">
-
+      <span id = "span">
+        
+        
+            </span>
       </div>
     </div>
   </div>
@@ -188,6 +189,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
