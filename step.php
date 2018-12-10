@@ -129,7 +129,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     <div class="row justify-content-center">
       <div class="col-12-xs">
       <span id = "span">
-        
+        <img src="img/user.png" alt="" class = "circle">
         
       </span>
       </div>
