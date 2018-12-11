@@ -1,9 +1,6 @@
 <?php 
 session_start();
 include('conexion/conexionBd.php');
-
-
-
 if(isset($_POST['sent'])) {
 
 	foreach($_POST as $calzon => $caca){		

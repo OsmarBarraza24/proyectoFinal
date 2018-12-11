@@ -1,3 +1,8 @@
+<?php
+session_start();
+include('conexion/conexionBd.php')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +14,7 @@
     <link rel="stylesheet" href="css/step.css">
     <link rel="stylesheet" href="css/update.css">
 
-    <title>Document</title>
+    <title>Actualizar datos</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
@@ -21,14 +26,14 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-     <img style="vertical-align:middle" class="img" src="imagenes/Osmar.jpg" alt=""> <p style="color:white">Osmar Barraza Flores</p></div>
+    <div > <img style="float:left" class="img" <?php echo '"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> </div>
+    <p style="color:white; padding-top:12px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]  ?></p>
       </ul>
       <ul class="nav navbar-nav navbar-center">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2 input-field" type="search" placeholder="Buscar" aria-label="Search">
         </form>
       </ul>
-
     </div>
   </nav>
   <br>
@@ -42,12 +47,12 @@
          <div class="row">
             <div class="col-xl-6">
             <span id = "span">
-             <img src="img/user.png" alt="" class = "circle">
+             <img <?php echo '"imagenes/'.$_SESSION["userFoto"].'"'?> alt="" class = "circle">
             </span>
             </div>
             <div class="col-xl-6">
                 <label for="">Nombre</label> <br>
-                <input  type="text"> <br>
+                <input value="<?php echo $userData["nombre"] ?>"  type="text"> <br>
                 <label for="">Apellidos</label> <br>
                 <input type="text"> <br>
             </div>
@@ -60,14 +65,14 @@
                         <h2>¡Conoce las ventajas de unirte al premium!</h2>
                     </div>
                 </div>
-                <div class="row box" style="text-align:center">
-                    <div class="col-xs-4">
+                <div class="row" style="text-align:center">
+                    <div class="col-xs-4 box">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-4 box">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
                     </div>
-                      <div class="col-xs-4">
+                      <div class="col-xs-4 box">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
                     </div>
                 </div>
