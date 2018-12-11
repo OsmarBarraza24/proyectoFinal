@@ -22,6 +22,8 @@ if(isset($_POST["sent"])) {
 		// Contamos los resultados, si no hay, definimos un error
 		if(mysql_num_rows($resQueryLoginUser)) {
 			$userData = mysql_fetch_assoc($resQueryLoginUser);
+            $_SESSION["nombre"] = $userData["nombre"];
+            $_SESSION["apellidos"] = $userData["apellidos"];
 			$_SESSION["idUsuario"] = $userData["id"];
             $_SESSION["userEmail"] = $userData["email"];
             $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];

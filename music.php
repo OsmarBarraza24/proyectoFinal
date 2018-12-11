@@ -2,17 +2,20 @@
 session_start();
 include('conexion/conexionBd.php');
 
-if(isset($_POST["nombrePalylist"])){
+if(isset($_GET["nombrePlaylist"])){
   $queryInsertPlaylist = sprintf("INSERT INTO playlist (nombre, idUsuario) VALUES ('%s', '%d')",
-  mysql_real_escape_string(trim($_POST["nombrePalylist"])),
+  mysql_real_escape_string(trim($_GET["nombrePlaylist"])),
   mysql_real_escape_string(trim($_SESSION["idUsuario"]))
   );
 
   $resQueryInsertPlaylist = mysql_query($queryInsertPlaylist, $conexionBd) or die ("No se ejecutó el query en la base de datos");
+  if($resQueryInsertPlaylist){
+    header("Location:music.php");
+  }
 }
 
-$queryGetPlaylist = "SELECT nombre FROM playlist WHERE id =". $_SESSION["idUsuario"];
-$resQueryGetPlaylist = mysql_query($queryInsertPlaylist, $conexionBd) or die ("No se ejecutó el query en la base de datos");
+ $queryGetPlaylist = sprintf("SELECT id, nombre FROM playlist WHERE idUsuario =".$_SESSION["idUsuario"]);
+ $resQueryGetPlaylist = mysql_query($queryGetPlaylist, $conexionBd) or die ("No se ejecutó el query en la base de datos");
 
 if(isset($_POST["logout"])){
     session_destroy();
@@ -44,48 +47,49 @@ if(isset($_POST["logout"])){
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-    <div > <img style="float:left" class="img" <?php echo '"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> </div>
-    <p style="color:white; padding-top:12px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]?></p>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img style="float:left" class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <form action="music.php" method="post">
+          <input type="submit" name="logout">
+          </form>
+        </div>
+      </li>
+    <div > </div>
+    <p style="color:white; padding-top:16px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]  ?></p>
       </ul>
       <ul class="nav navbar-nav navbar-center">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2 input-field" type="search" placeholder="Buscar" aria-label="Search">
         </form>
       </ul>
-
     </div>
   </nav>
-<div id="left">
-    <div id="top-left">
-      <div class="container-top">
-          <div style="display:inline-block;vertical-align:top;">
-              <img class="img" src= <?php echo '"imagenes/'.$_SESSION["userFoto"].'"'?> alt="">
-              <p class="p"><?php echo $_SESSION["userNombreCompleto"]?></p>
-          </div>        
+   <div class="scrollbar" id="style-2">
+      <div id="bottom">
+        <div class="container-bot">
+          <h6 class="name">TU BIBLIOTECA</h6>
+            <ul>
+               <li><i class="fas fa-music"></i> Canciones favoritas</li>
+              <li><i class="fas fa-male"></i> Artistas favoritos</li>
+            </ul> 
+            <h6>TUS PLAYLIST</h6> 
+            <ul>
+              <?php while($playListDetail = mysql_fetch_assoc($resQueryGetPlaylist)){?>
+                <li><a href="#"><?php echo $playListDetail["nombre"]?></a></li>
+              <?php }?> 
+              <li id = "AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
+            </ul>       
+        </div>
       </div>
-    </div>
-    <div id="bottom">
-      <div class="container-bot">
-        <h6 class="name">TU BIBLIOTECA</h6>
-          <ul>
-             <li><i class="fas fa-music"></i> Canciones favoritas</li>
-            <li><i class="fas fa-male"></i> Artistas favoritos</li>
-          </ul> 
-          <h6>TUS PLAYLIST</h6> 
-          <ul>
-            <?php while($playListDetail = mysql_fetch_assoc($resQueryGetPlaylist)){?>
-              <li><a href="#"><?php echo $playListDetail["nombre"]?></a></li>
-            <?php }?> 
-            <li id = "AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
-          </ul>       
-      </div>
+   </div>
+  </div>
     </div>
   </div>
-
-    </div>
-  </div>
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
