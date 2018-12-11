@@ -6,7 +6,6 @@ texto.addEventListener("focusout", quitForm);
 function addForm(){
     if (!bandera) {
         lista.innerHTML = ['<form action = "music.php" method = "get"><input type="text" name="nombrePlaylist" class="inputPlaylist"></form>'].join();
-        lista.innerHTML = ['<form action = "music.php" method = "post"><input type="text" name="nombrePlaylist" class="inputPlaylist"></form>'].join();
         bandera = true;
         
     }
