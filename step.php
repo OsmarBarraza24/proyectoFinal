@@ -41,7 +41,6 @@ $add="imagenes/$file_name";
 if($uploadedfileload){
 
 if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
-echo " Ha sido subido satisfactoriamente";
 }
 
 }
@@ -137,7 +136,7 @@ echo " Ha sido subido satisfactoriamente";
       <div class="col-12-xs">
         <br>
         <div class="upload-btn-wrapper">
-              <form action="step.php" method="post" enctype = "mulpipart/form-data">
+              <form action="step.php" method="post" enctype = "multipart/form-data">
                 <button class="btn">Subir foto</button>
                 <input type="file" name="uploadedfile" id="files"/>
         </div>
@@ -172,7 +171,7 @@ echo " Ha sido subido satisfactoriamente";
             <div class="row justify-content-center">
                <div class="col-12-xs">
                  <input type="submit" value="Confirmar" name="sent">
-                 <input type="hidden" name="id" value="<?php $_SESSION["userId"];?>">
+                 <input type="hidden" name="id" value="<?php $_SESSION["idUsuario"];?>">
         </form>
       </div>
     </div>
