@@ -103,7 +103,7 @@ if(isset($_POST['sent'])) {
       <div class="col-12-xs">
         <br>
         <div class="upload-btn-wrapper">
-              <form action="step.php" method="post">
+              <form action="step.php" method="post" enctype = "mulpipart/form-data">
                 <button class="btn">Subir foto</button>
                 <input type="file" name="uploadedfile" id="files"/>
         </div>

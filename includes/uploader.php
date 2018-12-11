@@ -7,8 +7,6 @@ $uploadedfileload=true;
 $uploadedfile_size=$_FILES['uploadedfile']['size'];
 $uploadedFileType = $_FILES['uploadedfile']['type'];
 
-echo $_FILES["uploadedfile"]["name"]. "<br>" . $uploadedFileType;
-
 
 if ($uploadedfile_size>1000000){
 
