@@ -46,12 +46,11 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 }
 
 	if(!isset($error)) {
-		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s' foto = '%s' genero = '%s'WHERE id = '%d'",
+		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s' foto = '%s' genero = '%s'WHERE id =". $_SESSION['idUsuario'],
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
       mysql_real_escape_string(trim($_POST["genero"])),
-      mysql_real_escape_string(trim($_POST["id"]))
 		);
 
 		$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
@@ -150,7 +149,9 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     </div>
     <?php 
         if(isset($error)){
-          echo "<h5 style='text-align:center;color:red'> <i> Favor de llenar todos los campos... </i></h5>";
+          foreach ($error as $key => $value) {
+            echo "<h5 style='text-align:center;color:red'> <i> $value </i></h5>";
+          }
         }
       ?>
     <div class="row justify-content-center">
