@@ -39,7 +39,7 @@ if(isset($_POST["logout"])){
           </ul> 
           <h6>TUS PLAYLIST</h6> 
           <ul>
-            <li id = "AgregarPlaylist"><i class="fas fa-plus-circle">Añadir playlist</i></li>
+            <li id = "AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
           </ul>       
       </div>
     </div>
