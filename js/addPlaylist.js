@@ -13,6 +13,6 @@ function addForm(){
 }
 
 function quitForm(){
-    lista.innerHTML = ['<i class="fas fa-plus-circle"></i>Añadir playlist'].join('');
+    lista.innerHTML = ['<i class="fas fa-plus-circle"></i>Añadir playlist'].join();
     bandera = false;
 }
