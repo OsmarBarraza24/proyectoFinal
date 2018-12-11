@@ -45,12 +45,11 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 
 	if(!isset($error)) {
 		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s', foto = '%s', genero = '%s'WHERE id =". $_SESSION['idUsuario'],
-			mysql_real_escape_string(trim($_POST["nombre"])),
+	  mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
       mysql_real_escape_string(strtoupper(trim($_POST["genero"])))
 		);
-
 		$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
     }
 }
@@ -104,7 +103,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
              <img src= <?php echo'"imagenes/'.$_SESSION['userFoto'].'"'?> alt="" class = "circle">
              <div class="upload-btn-wrapper">
                <form  action="step.php" method="post" enctype = "multipart/form-data">
-                <button style="margin-left:25px; margin-top:10px;" class="btn">Subir foto</button>
+                <button style="margin-left:25px; margin-top:10px;" class="btn">Cambiar foto</button>
                 <input type="file" name="uploadedfile" id="files"/>
         </div>
             </span>
@@ -115,8 +114,11 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                     <label for="">Apellidos</label> <br>
                     <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text"><br>
                     <br>
-                    <input type="submit" name="sent" value="Actualizar datos">
-               </form>
+                    
+                    <div style="margin-left:22px;">
+                        <input type="submit" name="sent" value="Actualizar datos">
+                    </div>
+                </form>
             </div>
             <br>
         </div>
