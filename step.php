@@ -59,7 +59,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 			$resQueryGetUser = mysql_query($queryGetUser, $conexionBd) or die("No se ejecutó el query en la base de datos");
 			if(mysql_num_rows($resQueryGetUser)){
 				$userData = mysql_fetch_assoc($resQueryGetUser);
-        $_SESSION["userId"] = $userData["id"];
+        $_SESSION["idUsuario"] = $userData["id"];
         $_SESSION["userEmail"] = $userData["email"];
         $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
         $_SESSION["userFoto"] = $userData["foto"];
