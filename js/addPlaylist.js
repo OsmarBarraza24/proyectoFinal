@@ -2,7 +2,7 @@ var lista = document.getElementById("AgregarPlaylist");
 var texto = document.getElementById("txtAdd");
 var bandera = false;
 lista.addEventListener("click", addForm);
-texto.addEventListener("lostpointercapture", quitForm);
+texto.addEventListener("focusout", quitForm);
 
 function addForm(){
     if (!bandera) {
