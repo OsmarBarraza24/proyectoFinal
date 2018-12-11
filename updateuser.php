@@ -44,17 +44,15 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 }
 
 	if(!isset($error)) {
-		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s', foto = '%s', genero = '%s'WHERE id =". $_SESSION['idUsuario'],
+      $queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s', foto = '%s' = '%s'WHERE id =". $_SESSION['idUsuario'],
 	  mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
-      mysql_real_escape_string(trim($file_name)),
-      mysql_real_escape_string(strtoupper(trim($_POST["genero"])))
+      mysql_real_escape_string(trim($file_name))
 		);
 		$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
     }
 }
         ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
