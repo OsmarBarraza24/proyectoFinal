@@ -46,7 +46,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 }
 
 	if(!isset($error)) {
-		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s' foto = '%s' genero = '%s'WHERE id =". $_SESSION['idUsuario'],
+		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s', foto = '%s', genero = '%s'WHERE id =". $_SESSION['idUsuario'],
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
