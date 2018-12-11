@@ -69,7 +69,6 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     }
 }
         ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
