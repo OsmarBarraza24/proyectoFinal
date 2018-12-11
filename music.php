@@ -1,5 +1,19 @@
 <?php 
 session_start();
+include('conexion/conexionBd.php');
+
+if(isset($_POST["nombrePalylist"])){
+  $queryInsertPlaylist = sprintf("INSERT INTO playlist (nombre, idUsuario) VALUES ('%s', '%d')",
+  mysql_real_escape_string(trim($_POST["nombrePalylist"])),
+  mysql_real_escape_string(trim($_SESSION["idUsuario"]))
+  );
+
+  $resQueryInsertPlaylist = mysql_query($queryInsertPlaylist, $conexionBd) or die ("No se ejecutó el query en la base de datos");
+}
+
+$queryGetPlaylist = "SELECT nombre FROM playlist WHERE id =". $_SESSION["idUsuario"];
+$resQueryGetPlaylist = mysql_query($queryInsertPlaylist, $conexionBd) or die ("No se ejecutó el query en la base de datos");
+
 if(isset($_POST["logout"])){
     session_destroy();
     header("Location: index.php");
@@ -39,6 +53,9 @@ if(isset($_POST["logout"])){
           </ul> 
           <h6>TUS PLAYLIST</h6> 
           <ul>
+            <?php while($playListDetail = mysql_fetch_assoc($resQueryGetPlaylist)){?>
+              <li><a href="#"><?php echo $playListDetail["nombre"]?></a></li>
+            <?php }?> 
             <li id = "AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
           </ul>       
       </div>
