@@ -123,9 +123,9 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
             </div>
             <div class="col-xl-6">
                     <label for="">Nombre</label> <br>
-                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>" type="text"> <br>
+                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>" type="text" name="nombre"> <br>
                     <label for="">Apellidos</label> <br>
-                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text"><br>
+                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text" name="apellidos"><br>
                     <br>
                     
                     <div style="margin-left:22px;">
