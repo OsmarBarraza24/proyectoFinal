@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/step.css">
+    <link rel="stylesheet" href="css/update.css">
     <title>Document</title>
 </head>
 <body>
@@ -53,7 +54,7 @@
             </div>
             <div class="col-xl-6">
                 <label for="">Nombre</label> <br>
-                <input type="text"> <br>
+                <input  type="text"> <br>
                 <label for="">Apellidos</label> <br>
                 <input type="text"> <br>
             </div>
