@@ -50,7 +50,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
-      mysql_real_escape_string(trim($_POST["genero"])),
+      mysql_real_escape_string(trim($_POST["genero"]))
 		);
 
 		$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
