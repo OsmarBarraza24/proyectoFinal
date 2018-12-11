@@ -1,7 +1,7 @@
 var lista = document.getElementById("AgregarPlaylist");
 var bandera = false;
 lista.addEventListener("click", addForm);
-texto.addEventListener("focusout", quitForm);
+texto.addEventListener("blur", quitForm);
 
 function addForm(){
     if (!bandera) {
@@ -16,3 +16,8 @@ $(document).ready(function () {
         $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
     }
 });
+
+function quitForm(){
+    lista.innerHTML = ['<i class="fas fa-plus-circle"></i>Añadir playlist'].join();
+    bandera = false;
+}
