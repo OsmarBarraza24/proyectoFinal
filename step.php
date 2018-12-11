@@ -50,7 +50,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 			mysql_real_escape_string(trim($_POST["nombre"])),
       mysql_real_escape_string(trim($_POST["apellidos"])),
       mysql_real_escape_string(trim($file_name)),
-      mysql_real_escape_string(trim($_POST["genero"]))
+      mysql_real_escape_string(strtoupper(trim($_POST["genero"])))
 		);
 
 		$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
@@ -163,9 +163,9 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
           <label for="genero">Genero</label> <br>
           <div class="selector">
           <select name="genero">
-           <option name="HOMBRE" value="0">Hombre</option>
-            <option name="MUJER" value="1">Mujer</option>
-             <option name="NA" value="2">Prefiero no especificar</option>
+           <option name="HOMBRE" value="hombre">Hombre</option>
+            <option name="MUJER" value="mujer">Mujer</option>
+             <option name="NA" value="na">Prefiero no especificar</option>
          </select>
           </div>        
           <div class="container"><br>
