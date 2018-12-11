@@ -21,7 +21,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-          <div class="cont"><img class="img" src="imagenes/Osmar.jpg" alt=""> <p style="color:white">Osmar Barraza Flores</p></div>
+     <img style="vertical-align:middle" class="img" src="imagenes/Osmar.jpg" alt=""> <p style="color:white">Osmar Barraza Flores</p></div>
       </ul>
       <ul class="nav navbar-nav navbar-center">
         <form class="form-inline my-2 my-lg-0">
