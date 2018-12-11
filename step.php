@@ -8,7 +8,7 @@ if(isset($_POST['sent'])) {
 	}
 
   $target_path = "imagenes/";
-$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+  $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
 $uploadedfileload=true;
 
@@ -54,7 +54,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 
    
 		if($resQueryUserUpdate) {
-      $queryGetUser = sprintf("SELECT nombre, apellidos, correo, foto FROM usuario WHERE id =". $_SESSION["idUsuario"]);
+      $queryGetUser = sprintf("SELECT id, nombre, apellidos, correo, foto FROM usuario WHERE id =". $_SESSION["idUsuario"]);
 
 			$resQueryGetUser = mysql_query($queryGetUser, $conexionBd) or die("No se ejecutó el query en la base de datos");
 			if(mysql_num_rows($resQueryGetUser)){
