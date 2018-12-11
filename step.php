@@ -7,7 +7,7 @@ include('conexion/conexionBd.php');
 if(isset($_POST['sent'])) {
 
 	foreach($_POST as $calzon => $caca){		
-			if($caca == "") { $error[] = "La caja $calzon debe contener un valor"; }		
+			if($caca == "" && $calzon != "id") { $error[] = "La caja $calzon debe contener un valor"; }		
 	}
 
   $target_path = "imagenes/";
