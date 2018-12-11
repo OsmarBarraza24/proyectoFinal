@@ -1,3 +1,19 @@
 input[type=input]{
     border-bottom: 4px solid black!important;
 }
+
+.box{
+    margin: 35px;
+}
+
+.img{
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 180px;
+    border: 1px solid white;
+}
+
+.cont{
+    display: inline-block;
+}
