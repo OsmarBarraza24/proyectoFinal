@@ -11,7 +11,7 @@ if(isset($_POST["sent"])) {
 	// Si no hay errores, definimos el query a ejecutar
 	if(!isset($error)) {
 		// Definimos el query consultar en la BD el email y password del usuario
-		$queryLoginUser = sprintf("SELECT id,email FROM tblUsuarios WHERE email = '%s' AND password = '%s'",
+		$queryLoginUser = sprintf("SELECT id, correo, nombre, apellidos, foto FROM usuario WHERE correo = '%s' AND contrasenia = '%s'",
 			mysql_real_escape_string(trim($_POST["email"])),
 			mysql_real_escape_string(trim($_POST["password"]))
 		);
@@ -23,7 +23,9 @@ if(isset($_POST["sent"])) {
 		if(mysql_num_rows($resQueryLoginUser)) {
 			$userData = mysql_fetch_assoc($resQueryLoginUser);
 			$_SESSION["userId"] = $userData["id"];
-			$_SESSION["userEmail"] = $userData["email"];
+            $_SESSION["userEmail"] = $userData["email"];
+            $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
+            $_SESSION["userFoto"] = $userData["foto"];
 			header("Location: music.php");
 		}
 		else {

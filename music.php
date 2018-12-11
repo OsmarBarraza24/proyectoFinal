@@ -25,8 +25,8 @@ if(isset($_POST["logout"])){
     <div id="top-left">
       <div class="container-top">
           <div style="display:inline-block;vertical-align:top;">
-              <img class="img" src="freddie.jpg" alt="">
-              <p class="p">Usuario</p>
+              <img class="img" src="imagenes/" <?php echo $_SESSION["userFoto"]?> alt="">
+              <p class="p"><?php echo $_SESSION["userNombreCompleto"]?></p>
           </div>        
       </div>
     </div>
