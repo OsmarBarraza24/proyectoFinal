@@ -8,7 +8,7 @@ if(isset($_POST['enviarA'])){
 
   if(!isset($error)){
     $queryAgregarArtista = sprintf("INSERT INTO artista (nombre) VALUE ('%s')",
-      mysql_real_escape_string(trim($_POST["nombreA"]));
+      mysql_real_escape_string(trim($_POST["nombreA"]))
     );
 
     $resQueryAgregarArtista = mysql_query($queryAgregarArtista, $conexionBd) or die ("No se pudo agregar artista a la base de datos");
@@ -121,10 +121,19 @@ if(isset($_POST['enviarA'])){
       <div class="card-body">
         <div class="container">
           <div class="row">
-            <div class="col">
-              <img class="album" src="imagenes/Osmar.jpg" alt="">
-            </div>
+            <div class="col">           
+               <span id="span"> <img class="album" src="imagenes/Osmar.jpg" alt=""> <br></span>
           </div>
+          <div class="row">
+            <div class="col">
+            <form action="adminadd.php" method="post">
+          <label for="nombreAlbum">Nombre del album</label>
+          <input type="text" name="enviarAl">
+          <label for="genero">Genero</label>
+          <input type="text" name="genero" >
+          </form>
+            </div>
+          </div>            
         </div>
       </div>
     </div>
