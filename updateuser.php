@@ -118,7 +118,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
              <div class="upload-btn-wrapper">
                <form  action="updateuser.php" method="post" enctype = "multipart/form-data">
                 <button style="margin-left:25px; margin-top:10px;" class="btn">Cambiar foto</button>
-                <input type="file" name="uploadedfile" id="files"/>
+                <input type="file" name="uploadedfile" id="files" value = <?php echo '"'.$_SESSION["userFoto"].'"'?>/>
             </span>
             </div>
             <div class="col-xl-6">
