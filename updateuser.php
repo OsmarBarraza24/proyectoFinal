@@ -153,6 +153,13 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
                     </div>
                 </div>
+                <?php 
+                if(isset($error)){
+                    foreach ($error as $key => $value) {
+                        echo $value;
+                    }
+                }
+                ?>
         </div>
 
 <script src="js/index.js"></script>
