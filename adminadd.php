@@ -1,5 +1,11 @@
 <?php
 session_start();
+if($_POST['enviarA']){
+  $queryAgregarArtista = sprintf("INSERT INTO artista (nombre) VALUE '%s'",
+  mysql_real_escape_string(trim($_POST[]));
+  );
+}
+
 ?>
 
 <!DOCTYPE html>
