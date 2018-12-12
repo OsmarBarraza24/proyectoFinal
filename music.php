@@ -35,6 +35,7 @@ if(isset($_POST["logout"])){
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/music.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">
     <title>¡Escucha tu música!</title>
 </head>
 <body>
@@ -90,9 +91,29 @@ if(isset($_POST["logout"])){
   </div>
     </div>
   </div>
+
+
   <div class="footer">
-                
-  </div>
+      <div id="amazingaudioplayer-1" style="display:block;position:relative;width:80%;height:164px;margin:0px auto 0px;float:rigth">
+          <ul class="amazingaudioplayer-audios" style="display:none;">
+              <li data-artist="" data-title="Love of Lesbian - Contraespionaje (Lyric Video)" data-album="" data-info="" data-image="" data-duration="313">
+                  <div class="amazingaudioplayer-source" data-src="audios/Contraespionaje.mp3" data-type="audio/mpeg" ></div>
+              </li>
+              <li data-artist="" data-title="Love of Lesbian - El poeta Halley (Lyric Video)" data-album="" data-info="" data-image="" data-duration="445">
+                  <div class="amazingaudioplayer-source" data-src="audios/ElPoetaHalley.mp3" data-type="audio/mpeg" ></div>
+              </li>
+              <li data-artist="Love of lesbian" data-title="Planeador" data-album="Psiconautas" data-info="A" data-image="" data-duration="337">
+                  <div class="amazingaudioplayer-source" data-src="audios/Planeador.mp3" data-type="audio/mpeg" ></div>
+              </li>
+          </ul>      
+      </div>
+</div>
+
+</div>
+
+<script src="audioplayerengine/jquery.js"></script>
+    <script src="audioplayerengine/amazingaudioplayer.js"></script>
+<script src="audioplayerengine/initaudioplayer-1.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
