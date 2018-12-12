@@ -8,7 +8,8 @@ if(isset($_POST['sent'])) {
 			if($caca == "" && $calzon != "id") { $error[] = "La caja $calzon debe contener un valor"; }		
 	}
 
-  $target_path = "imagenes/";
+if ($_FILES['uploadedfile']['name'] != "") {
+    $target_path = "imagenes/";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
 $uploadedfileload=true;
@@ -51,6 +52,18 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
 		);
 	$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
     }
+}else{
+    if(!isset($error)) {
+		$queryUserUpdate = sprintf("UPDATE usuario SET nombre = '%s', apellidos = '%s', foto = '%s'WHERE id =". $_SESSION['idUsuario'],
+	  mysql_real_escape_string(trim($_POST["nombre"])),
+      mysql_real_escape_string(trim($_POST["apellidos"])),
+      mysql_real_escape_string(trim($_SESSION["userFoto"]))
+		);
+	$resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die("No se pudo actualizar los datos... Revisa tu código plomo.");
+    }
+}
+
+  
 
     if ($resQueryUserUpdate) {
         $queryGetUser = sprintf("SELECT id, nombre, apellidos, correo, foto FROM usuario WHERE id =". $_SESSION["idUsuario"]);
@@ -154,6 +167,10 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                     </div>
                 </div>
                 <?php 
+                if(isset($_FILES["uploadedfile"]["tmp_name"])){
+                    echo $_FILES["uploadedfile"]["tmp_name"];
+
+                }
                 if(isset($error)){
                     foreach ($error as $key => $value) {
                         echo $value;
