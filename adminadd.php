@@ -30,6 +30,7 @@ if(isset($_GET['enviarA'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/step.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Opciones de administrador</title>
@@ -103,7 +104,7 @@ if(isset($_GET['enviarA'])){
                 <form enctype = "multipart/form-data" method="get" action="adminadd.php">
                   <label for="nombreA">Nombre</label> <br>
                   <input type="text" name="nombreA"> <br>
-                  <input type="submit" value="Agregar" name="enviarA"> 
+                  <input class="btn btn-primary" style="margin-left:18px;margin-top:10px;" type="submit" value="Agregar" name="enviarA"> 
                 </form>
               </div>
             </div>
@@ -123,15 +124,28 @@ if(isset($_GET['enviarA'])){
         <div class="container">
           <div class="row">
             <div class="col">           
-               <span id="span"> <img class="album" src="imagenes/Osmar.jpg" alt=""> <br></span>
-          </div>
+               <span style="margin-left:10px;" id="span"> <img  class="album" src="imagenes/Osmar.jpg" alt=""> <br></span>
+               <div class="upload-btn-wrapper">
+                    <form action="adminadd.php" method="get" enctype = "multipart/form-data">
+                      <button style="margin-top:10px" class="btn">Subir foto</button>
+                      <input  type="file" name="uploadedfile" id="files"/>
+                </div>
+             </div>
+             </div>
           <div class="row">
             <div class="col">
-            <form action="adminadd.php" method="post">
-          <label for="nombreAlbum">Nombre del album</label>
-          <input type="text" name="enviarAl">
-          <label for="genero">Genero</label>
-          <input type="text" name="genero" >
+          <label for="nombreAl">Nombre del album</label> <br>
+          <input type="text" name="nombreAl"> <br>
+          <label for="generoAl">Genero</label> <br>
+          <input type="text" name="generoAl" > <br>
+          <label for="artista">Artista</label>
+          <div class="col-xs-12 justify-self-end">
+          <select style="margin-top:5px;width:280px;border-radius: 20px;" class="dropdown-toggle" name="" id="">
+              <option value="">El chuy</option>
+          </select> <br>
+          </div>
+          
+          <input style="margin-top:25px;margin-left:15px;" type="submit" name="subirAl">
           </form>
             </div>
           </div>            
@@ -155,6 +169,7 @@ if(isset($_GET['enviarA'])){
   </div>
 </div>
 </div>
+<script src="js/index.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
