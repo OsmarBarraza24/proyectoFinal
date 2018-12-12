@@ -1,6 +1,6 @@
 <?php 
 
-$servidor = "192.162.0.11";
+$servidor = "198.162.0.11";
 $baseDatos = "gentlefy";
 $usuarioBd = "root";
 $passwordBd = "perron11";
