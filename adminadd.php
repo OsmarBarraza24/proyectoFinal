@@ -56,31 +56,45 @@ session_start();
 </div>
 
 <div class="container">
-<div class="col-xs-12">
-    <div class="accordion" id="accordionExample">
-  <div class="card">
+  <div style="width:100%" class="accordion" id="accordionExample">
+  <div style="width:100%; class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Agregar Album
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+          Agregar nuevo artista
         </button>
       </h5>
     </div>
-
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-       <form method="post" action="adminadd.php">
-       <label for="foto" name="foto">Foto del album</label>
-       <img class="album" src="" alt="">
-       </form>
+        <div class="containter">
+          <div class="row justify-content-center">
+            <div class="col-xs-12">
+                <h5>Agregar artista</h5>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xs-12">
+          </div>        
+        </div>
+            <div class="row justify-content-center">
+              <div class="col-xs-12">
+                <form enctype = "multipart/form-data" method="post" action="adminadd.php">
+                  <label for="nombre">Nombre</label> <br>
+                  <input type="text" name="nombre"> <br>
+                  <input type="submit" value="Agregar" name="enviarA"> 
+                </form>
+              </div>
+            </div>
       </div>
     </div>
   </div>
-  <div class="card">
+  <div style="width:100%; class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Agregar artista
+          Agregar nuevo album
         </button>
       </h5>
     </div>
@@ -90,11 +104,11 @@ session_start();
       </div>
     </div>
   </div>
-  <div class="card">
+  <div style="width:100%; class="card">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Agregar canciones
+          Agregar canciones.
         </button>
       </h5>
     </div>
@@ -104,6 +118,7 @@ session_start();
       </div>
     </div>
   </div>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

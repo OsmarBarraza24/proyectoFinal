@@ -33,9 +33,9 @@ if(isset($_POST["logout"])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
     crossorigin="anonymous">
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/music.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">
+    <link rel="stylesheet" href="css/music.css">
     <title>¡Escucha tu música!</title>
 </head>
 <body>

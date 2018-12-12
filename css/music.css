@@ -112,6 +112,7 @@ a:hover{
         box-sizing: content-box;
         width: 160px;
         height: 165px;
+        border-radius:180px;
         border: none;
         color: rgba(255,255,255,1);
         text-align: center;
@@ -119,4 +120,8 @@ a:hover{
         text-overflow: ellipsis;
         -webkit-box-shadow: 1px 0 9px 4px rgba(0,0,0,0.5) ;
         box-shadow: 1px 0 9px 4px rgba(0,0,0,0.5) ;     
+  }
+
+  .card{
+      width: 100%;
   }
