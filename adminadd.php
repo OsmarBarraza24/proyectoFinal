@@ -1,19 +1,20 @@
 <?php
 session_start();
 include("conexion/conexionBd.php");
-if(isset($_POST['enviarA'])){
-  if($_POST["nombreA"] == ""){
+if(isset($_GET['enviarA'])){
+  if($_GET["nombreA"] == ""){
     $error[] = "No se llenó el campo requerido";
   }
 
   if(!isset($error)){
     $queryAgregarArtista = sprintf("INSERT INTO artista (nombre) VALUE ('%s')",
-      mysql_real_escape_string(trim($_POST["nombreA"]));
+      mysql_real_escape_string(trim($_GET["nombreA"]));
     );
 
     $resQueryAgregarArtista = mysql_query($queryAgregarArtista, $conexionBd) or die ("No se pudo agregar artista a la base de datos");
     
     if($resQueryAgregarArtista){
+      header("Location:adminadd.php");
       $mensaje = "Se ha agregado el artista con éxito";
     }
   }
@@ -99,7 +100,7 @@ if(isset($_POST['enviarA'])){
         </div>
             <div class="row justify-content-center">
               <div class="col-xs-12">
-                <form enctype = "multipart/form-data" method="post" action="adminadd.php">
+                <form enctype = "multipart/form-data" method="get" action="adminadd.php">
                   <label for="nombreA">Nombre</label> <br>
                   <input type="text" name="nombreA"> <br>
                   <input type="submit" value="Agregar" name="enviarA"> 
