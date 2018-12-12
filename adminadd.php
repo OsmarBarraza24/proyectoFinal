@@ -20,6 +20,64 @@ if(isset($_GET['enviarA'])){
   }
 }
 
+if(isset($_GET["subirAl"])){
+  foreach($_GET as $calzon => $caca){		
+    if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 		
+  }
+
+  $target_path = "imagenes/";
+  $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+
+  $uploadedfileload=true;
+
+  if($_FILES["uploadedfile"]["name"] != ""){
+    $uploadedfile_size=$_FILES['uploadedfile']['size'];
+    $uploadedFileType = $_FILES['uploadedfile']['type'];
+
+
+    if ($uploadedfile_size>1000000){
+
+    $error[] = "El archivo es mayor que 1MB, debes reduzcirlo antes de subirlo<BR>";
+
+    $uploadedfileload=false;
+
+    }
+
+    if (!($uploadedFileType == "image/jpeg" OR $uploadedFileType =="image/gif")){
+        $error[] =  " Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
+        
+        $uploadedfileload=false;
+    }
+
+
+    $file_name=$_FILES["uploadedfile"]["name"];
+
+    $add="imagenes/$file_name";
+
+    if($uploadedfileload){
+
+    if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
+    }
+
+    }
+  }else $error[] = "Es necesario subir una imagen";
+
+  if(!isset($error)){
+    $querySubirAlbum = sprintf("INSERT INTO album (nombre, genero, idArtista) VALUES ('%s', '%s', %d)",
+      mysql_real_escape_string(trim($_GET["nombreAl"])),
+      mysql_real_escape_string(trim($_GET["generoAl"])),
+      mysql_real_escape_string(trim($_GET["nombreAr"]))
+    );
+
+    $resQuerySubirAlbum = mysql_query($querySubirAlbum, $conexionBd) or die ("No se puedo agregar album");
+    
+    if($resQuerySubirAlbum){
+      header("Location:adminadd.php");
+      $mensaje = "Se ha subido el album con exito";
+    }
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -140,8 +198,15 @@ if(isset($_GET['enviarA'])){
           <input type="text" name="generoAl" > <br>
           <label for="artista">Artista</label>
           <div class="col-xs-12 justify-self-end">
-          <select style="margin-top:5px;width:280px;border-radius: 20px;" class="dropdown-toggle" name="" id="">
-              <option value="">El chuy</option>
+          <select style="margin-top:5px;width:280px;border-radius: 20px;" class="dropdown-toggle" name="nombreAr" id="">
+              <?php 
+              $queryObtenerArtistaForm = "SELECT * FROM artista";
+              $resQueryObtenerArtistaForm = mysql_query($queryObtenerArtistaForm, $conexionBd) or die ("No se realizó la consulta en el form");
+              
+              while($artisData = mysql_fetch_assoc($resQueryObtenerArtistaForm)){
+              ?>
+              <option value= <?php echo '"'.$artisData["id"].'"'?>><?php echo $artisData["nombre"]?></option>
+              <?php }?>
           </select> <br>
           </div>
           
@@ -224,7 +289,7 @@ if(isset($_GET['enviarA'])){
         </div>
 </div>
 </div>
-<script src="js/index.js"></script>
+<script src="js/adminimg.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
