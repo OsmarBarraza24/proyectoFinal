@@ -69,6 +69,7 @@ session_start();
       <div class="card-body">
        <form method="post" action="adminadd.php">
        <label for="foto" name="foto">Foto del album</label>
+       <img class="" src="" alt="">
        </form>
       </div>
     </div>
