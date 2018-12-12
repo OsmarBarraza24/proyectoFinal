@@ -54,7 +54,7 @@ session_start();
     </div>
 <div class="row">
    
-    <div class="col-xs-4">
+    <div class="col-xs-12">
     <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -65,7 +65,7 @@ session_start();
       </h5>
     </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
        <form method="post" action="adminadd.php">
        <label for="foto" name="foto">Foto del album</label>
@@ -104,8 +104,8 @@ session_start();
   </div>
 </div>
 </div>
-<div class="col-xs-6">
-<img class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> 
+<div class="col">
+<img class="img" src= "" alt=""> 
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
