@@ -285,9 +285,17 @@ if(isset($_POST["subirAl"])){
           <div class="col-xs-12">
             <h5>Resultados de la busqueda</h5>
           </div>
-</div>
-          <hr>        
-        </div>
+          </div>
+         </div>
+         <hr>
+            <div class="searchres">
+              <h2>Osmar Barraza Flores</h2>
+              <p>PREMIUM</p>
+              <div class="corner">
+                <div style="dispay:inline-block;"><p>Eliminar</p> <p>Editar</p></div>
+              </div>
+            </div>
+
 </div>
 </div>
 <script src="js/adminimg.js"></script>

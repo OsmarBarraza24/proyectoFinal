@@ -111,3 +111,25 @@ input[type=submit]{
     width: 280px;
     border: 1px solid rgb(87, 87, 87);
 }
+
+.searchres{
+    position: relative;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 1117px;
+        height: 107px;
+        border-bottom: 2px solid rgba(0,150,255,0.91);
+        color: black;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
+      
+}
+
+.corner {
+    position:absolute;
+    bottom:0;
+    right:0;
+}
