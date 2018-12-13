@@ -176,17 +176,32 @@ header("Location:music.php");
                    
                         <div class="row justify-content-center">
                             <div class="col-xs-12">
+                                <?php if($_SESSION["userPlan"] == "FREE"){?>
                                 <label for="">Nombre</label> <br>
-                                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>" type="text" name="nombre"> <br>
+                                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>" disabled type="text" name="nombre"> <br>
                                     <label for="">Apellidos</label> <br>
-                                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text" name="apellidos"><br>                 
+                                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>" disabled type="text" name="apellidos"><br>                 
                                     <label for="">Correo</label> <br>
                                     <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userEmail'];?>" type="text" name="apellidos""> <br> 
                                     <label for="plan">Tipo de cuenta</label> <br>
                                     <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userPlan'];?>" type="text" name="plan"">  <br>
                                         <div style="margin-left:22px; margin-top:15px;">   
                                         <input style="margin-top:15px;" type="submit" name="sent" value="Actualizar datos"> <br> <br>                                                                                                 
-                            </div>              
+                                    
+                                <?php }else{?>
+                                    <label for="">Nombre</label> <br>
+                                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>"  type="text" name="nombre"> <br>
+                                    <label for="">Apellidos</label> <br>
+                                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"  type="text" name="apellidos"><br>                 
+                                    <label for="">Correo</label> <br>
+                                    <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userEmail'];?>" type="text" name="apellidos""> <br> 
+                                    <label for="plan">Tipo de cuenta</label> <br>
+                                    <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userPlan'];?>" type="text" name="plan"">  <br>
+                                        <div style="margin-left:22px; margin-top:15px;">   
+                                        <input style="margin-top:15px;" type="submit" name="sent" value="Actualizar datos"> <br> <br>                                                                                                 
+                                    
+                                <?php }?>    
+                                    </div>              
                         </form>
                         <div class="row">
                         <div class="col">
