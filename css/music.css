@@ -13,15 +13,15 @@ body {
 }
 
 .container-top{
-    background:#011638;
+    background:white;
     padding: 5px;  
     border-bottom: 2px solid #8A8C82;
 }
 
 .container-bot{
-    color: #F2EFEA;
+    color: white;
     width: 250px;
-    background: #8A8C82;
+    background: #011638;
     height: 100vh;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .container-bot ul li{
-    color: #011638;
+    color: white;
     font-family: verdana;
     text-align: left;
     padding: 10px;

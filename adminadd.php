@@ -79,77 +79,6 @@ if(isset($_POST["subirAl"])){
   }
 }
 
-if(isset($_POST["enviarC"])){
-  $path = "audio/"; //file to place within the server
-  $actual_image_name = "";
-  foreach ($_POST as $calzon => $caca) {
-    if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 
-  }
-  if($_FILES["file1"]["name"] != ""){
-    $valid_formats1 = array("mp3", "ogg", "flac"); //list of file extention to be accepted
-    if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
-    {
-        $file1 = $_FILES['file1']['name']; //input file name in this code is file1
-
-        if(strlen($file1))
-            {
-                list($txt, $ext) = explode(".", $file1);
-                if(in_array($ext,$valid_formats1))
-                {
-                        $actual_image_name = $txt.".".$ext;
-                        $tmp = $_FILES['file1']['tmp_name'];
-                        if(move_uploaded_file($tmp, $path.$actual_image_name))
-                            {
-                            //success upload
-                            }
-                        else
-                            echo "failed";              
-                    }
-        }
-    }
-  }else{
-    $error[] = "Es necesario que se suba un archivo para la cancion";
-  }
-  
-  if (!isset($error)) {
-    $querySubirCancion = sprintf("INSERT INTO cancion (nombre, ruta) VALUES ('%s', '%s')",
-      mysql_real_escape_string(trim($_POST["nombreC"])),
-      mysql_real_escape_string(trim($actual_image_name))
-    );
-
-    $resQuerySubirCancion = mysql_query($querySubirCancion, $conexionBd) or die("No se pudo agregar la cancion");
-    if($resQuerySubirCancion){
-      $queryObtenerCancion = sprintf("SELECT id FROM cancion WHERE nombre = '%s'",
-        mysql_real_escape_string(trim($_POST["nombreC"]))
-      );
-      $resQueryObtenerCancion = mysql_query($queryObtenerCancion, $conexionBd) or die ("No se obtuvo la cancion");
-
-      $cancionData = mysql_fetch_assoc($resQueryObtenerCancion);
-
-      $queryRelacionCancionAlbum = sprintf("INSERT INTO rel_cancion_album (idCancion, idAlbum) VALUES ('%d', '%d')",
-        $cancionData["id"],
-        mysql_real_escape_string(trim($_POST["album"]))
-      );
-
-      $resQueryRelacionCancionAlbum = mysql_query($queryRelacionCancionAlbum, $conexionBd) or die ("No se pudo completar la relación en cancion y album");
-
-      $queryRelacionCancionArtista = sprintf("INSERT INTO rel_cancion_artista (idCancion, idArtista) VALUES ('%d', '%d')",
-        $cancionData["id"],
-        mysql_real_escape_string(trim($_POST["artista"]))
-      );
-
-      $resQueryRelacionCancionArtista = mysql_query($queryRelacionCancionArtista, $conexionBd) or die ("No se pudo completar la relación en cancion y artista");
-    
-      if($resQueryRelacionCancionArtista){
-        header("Location:adminadd.php");
-      }
-
-    }
-  
-  }
-
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -303,36 +232,22 @@ if(isset($_POST["enviarC"])){
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <form action="adminadd.php" method="post" enctype = "multipart/form-data">
+                  <form action="adminadd.phph" method="get" enctype = "multipart/form-data">
                     <label for="">Nombre de la canción</label> <br>
                     <input type="text" name="nombreC"> <br>
                     <label for="subir">Subir canción</label> <br>
                     <div style="width:280px;" class="upload-btn-wrapper">
                       <button style="margin-top:5px" class="btn">Subir canción</button>
-                      <input  type="file" name="file1" accept = ".ogg,.flac,.mp3"id="files"/>
+                      <input  type="file" name="uploadedfile" id="files"/>
                       </div> 
                       <br>
                     <label for="">Album al que pertenece</label> <br>
                     <select style="width:250px" name="album" id="">
-                        <?php 
-                          $queryObtenerAlbumForm = "SELECT id, nombre FROM album";
-                          $resQueryObtenerAlbumForm = mysql_query($queryObtenerAlbumForm, $conexionBd) or die ("No se realizó la consulta en el form");
-                          
-                          while($artisData = mysql_fetch_assoc($resQueryObtenerAlbumForm)){
-                        ?>
-                        <option value= <?php echo '"'.$artisData["id"].'"'?>><?php echo $artisData["nombre"]?></option>
-                        <?php }?>
+                      <option value="">Album</option>
                     </select> <br>
                     <label for="">Artista al que pertenece</label> <br>
                     <select style="width:250px" name="artista" id="">
-                        <?php 
-                          $queryObtenerArtistaForm = "SELECT id, nombre FROM artista";
-                          $resQueryObtenerArtistaForm = mysql_query($queryObtenerArtistaForm, $conexionBd) or die ("No se realizó la consulta en el form");
-                          
-                          while($artisData = mysql_fetch_assoc($resQueryObtenerArtistaForm)){
-                        ?>
-                        <option value= <?php echo '"'.$artisData["id"].'"'?>><?php echo $artisData["nombre"]?></option>
-                        <?php }?>
+                      <option value="">Artista</option>
                     </select><br>
                     <input  style="margin-top:10px" type="submit" name="enviarC">
                   </form>
@@ -376,8 +291,11 @@ if(isset($_POST["enviarC"])){
             <div class="searchres">
               <h2>Osmar Barraza Flores</h2>
               <p>PREMIUM</p>
-              <div class="corner">
-                <div style="dispay:inline-block;"><a href="#"><p>Eliminar</p></a> <a href="#"><p>Editar</p></a></div>
+              <div>
+               <form action="adminadd.php" method="get">
+                  <input value="Editar" type="submit" name="editar"> <br>
+                  <input style="margin-top:10px;" type="submit" value="Eliminar" name="eliminar">
+               </form>
               </div>
             </div>
 

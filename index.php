@@ -25,7 +25,7 @@ if(isset($_POST["sent"])) {
             $_SESSION["nombre"] = $userData["nombre"];
             $_SESSION["apellidos"] = $userData["apellidos"];
 			$_SESSION["idUsuario"] = $userData["id"];
-            $_SESSION["userEmail"] = $userData["email"];
+            $_SESSION["userEmail"] = $userData["correo"];
             $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
             $_SESSION["userFoto"] = $userData["foto"];
 			header("Location: music.php");

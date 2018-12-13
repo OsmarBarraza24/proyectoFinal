@@ -74,7 +74,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                 $_SESSION["nombre"] = $userData["nombre"];
                 $_SESSION["apellidos"] = $userData["apellidos"];
                 $_SESSION["idUsuario"] = $userData["id"];
-                $_SESSION["userEmail"] = $userData["email"];
+                $_SESSION["userEmail"] = $userData["correo"];
                 $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
                 $_SESSION["userFoto"] = $userData["foto"];
         }
@@ -119,37 +119,39 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     <div class="container">
          <div class="row">
                 <div class="col-xl-12">
-                    <h1>Actualiza tus datos</h1>
+                    <h1>Actualiza tu perfil</h1>
                 </div>
          </div>
          <br>
-         <div class="row">
+         <div class="row justify-content-center">
             <div class="col-xl-6">
-            <span id = "span">
-             <img src= <?php echo'"imagenes/'.$_SESSION['userFoto'].'"'?> alt="" class = "circle">
-            </div>         
-            </span>
-            <div class="upload-btn-wrapper">
-               <form  action="updateuser.php" method="post" enctype = "multipart/form-data">
-                <button style="margin-left:25px; margin-top:10px;" class="btn">Cambiar foto</button>
-                <input type="file" name="uploadedfile" id="files" value = "<?php echo $_SESSION['userFoto'];?>"/>
-            </span>
+                <span id = "span">
+                    <img src= <?php echo'"imagenes/'.$_SESSION['userFoto'].'"'?> alt="" class = "circle">
+                </span>
+                        <form  action="updateuser.php" method="post" enctype = "multipart/form-data">   
+                <div class="upload-btn-wrapper">       
+                    <button style="margin-top:10px;margin-left:30px;" class="btn">Cambiar foto</button>
+                    <input type="file" name="uploadedfile" id="files" value = "<?php echo $_SESSION['userFoto'];?>"/>              
+                </div> 
+            </div>              
+                   
+                        <div class="row justify-content-center">
+                            <div class="col-xs-12">
+                                <label for="">Nombre</label> <br>
+                                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>" type="text" name="nombre"> <br>
+                                    <label for="">Apellidos</label> <br>
+                                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text" name="apellidos"><br>                 
+                                    <label for="">Correo</label> <br>
+                                    <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userEmail'];?>" type="text" name="apellidos""> 
+                                        <div style="margin-left:22px; margin-top:15px;">   
+                                        <input style="margin-top:15px;" type="submit" name="sent" value="Actualizar datos">                                                        
+                            </div>              
+                        </form>
             </div>
-            <div class="col-xl-6">
-                    <label for="">Nombre</label> <br>
-                    <input style="text-align:center;" value="<?php echo $_SESSION['nombre'];?>" type="text" name="nombre"> <br>
-                    <label for="">Apellidos</label> <br>
-                    <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text" name="apellidos"><br>
-                    <br>    
-                    <div style="margin-left:22px;">
-                        <input type="submit" name="sent" value="Actualizar datos">
-                    </div>
-                </form>
-            </div>
-            <br>
         </div>
         <br>
-        <div class="container-fluid">
+        <br>
+        <div style="margin-top:4rem;" class="container-fluid">
         <div class="row justify-content-center">
                     <div class="col-xs-12">
                         <h2>¡Conoce las ventajas de unirte al premium!</h2>
