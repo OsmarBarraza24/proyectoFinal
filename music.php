@@ -39,13 +39,12 @@ if(isset($_POST["logout"])){
     <title>¡Escucha tu música!</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-nav">
     <a class="navbar-brand" href="#"><i class="fab fa-spotify fa-2x"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
@@ -60,7 +59,6 @@ if(isset($_POST["logout"])){
           </form>
         </div>
       </li>
-    <div > </div>
     <p style="color:white; padding-top:16px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]  ?></p>
       </ul>
       <ul class="nav navbar-nav navbar-center">
@@ -91,10 +89,34 @@ if(isset($_POST["logout"])){
   </div>
     </div>
   </div>
-                <div class="music-container">
 
-                </div>
+<div class="music-container">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="imagenes/poetaHalley.jpg" alt="Card image cap">
+  <div class="card-body">
+    <a href="#"><h5 style="color:#087CA7;" class="card-title">Nombre de playlist</h5></a>
+    <p style="color:#087CA7" class="card-text">Breve descripción de la playlist</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="imagenes/poetaHalley.jpg" alt="Card image cap">
+  <div class="card-body">
+    <a href="#"><h5 style="color:#087CA7;" class="card-title">Nombre de playlist</h5></a>
+    <p style="color:#087CA7" class="card-text">Breve descripción de la playlist</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="imagenes/poetaHalley.jpg" alt="Card image cap">
+  <div class="card-body">
+    <a href="#"><h5 style="color:#087CA7;" class="card-title">Nombre de playlist</h5></a>
+    <p style="color:#087CA7" class="card-text">Breve descripción de la playlist</p>
+  </div>
+</div>
+</div>
+</div>
 
+  
+  
   <div style="margin-left:127px;" class="footer">
       <div id="amazingaudioplayer-1" style="display:block;position:relative;width:1250px;height:164px;margin:0px auto 0px;float:rigth">
           <ul class="amazingaudioplayer-audios" style="display:none;">
@@ -110,11 +132,9 @@ if(isset($_POST["logout"])){
           </ul>      
       </div>
 </div>
-
 </div>
-
 <script src="audioplayerengine/jquery.js"></script>
-    <script src="audioplayerengine/amazingaudioplayer.js"></script>
+<script src="audioplayerengine/amazingaudioplayer.js"></script>
 <script src="audioplayerengine/initaudioplayer-1.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

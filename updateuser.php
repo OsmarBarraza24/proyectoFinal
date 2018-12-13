@@ -63,8 +63,6 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     }
 }
 
-  
-
     if ($resQueryUserUpdate) {
         $queryGetUser = sprintf("SELECT id, nombre, apellidos, correo, foto, plan FROM usuario WHERE id =". $_SESSION["idUsuario"]);
 
@@ -80,6 +78,15 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                 $_SESSION["userPlan"] = $userData["plan"];
         }
         header("Location:music.php");
+    }
+    
+}
+
+if(isset($_GET["delete"])){
+    $queryEliminarUsuario = "DELETE FROM usuario WHERE id=".$_SESSION["idUsuario"];
+    $resQueryEliminarUsuario = mysql_query($queryEliminarUsuario, $conexionBd) or die ("No se ha podido eliminar el usuario");
+    if ($resQueryEliminarUsuario) {
+        header("Location:index.php");
     }
 }
         ?>
@@ -157,9 +164,14 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                                     <label for="">Correo</label> <br>
                                     <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userEmail'];?>" type="text" name="apellidos""> 
                                         <div style="margin-left:22px; margin-top:15px;">   
-                                        <input style="margin-top:15px;" type="submit" name="sent" value="Actualizar datos">                                                        
+                                        <input style="margin-top:15px;" type="submit" name="sent" value="Actualizar datos"> <br> <br>                                                                                                 
                             </div>              
                         </form>
+                        <div class="row">
+                        <div class="col">
+                        <form action="updateuser.php" method="get"><input style="background:red;border:1px solid red" style="margin-top:15px;margin-left:10px;" type="submit" name="delete" value="Eliminar cuenta"></form>
+                        </div>
+                        </div>
             </div>
         </div>
         <br>

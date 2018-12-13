@@ -29,11 +29,6 @@ a{
     padding: 10px 10px;
 }
 
-.card{
-    border: 1px solid red;
-    height: 300px;
-    width: 250px;
-}
 
 .container{
     display: flex;
