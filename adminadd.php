@@ -116,6 +116,36 @@ if(isset($_POST["enviarC"])){
       mysql_real_escape_string(trim($_POST["nombreC"])),
       mysql_real_escape_string(trim($actual_image_name))
     );
+
+    $resQuerySubirCancion = mysql_query($querySubirCancion, $conexionBd) or die("No se pudo agregar la cancion");
+    if($resQuerySubirCancion){
+      $queryObtenerCancion = sprintf("SELECT id FROM cancion WHERE nombre = '%s'",
+        mysql_real_escape_string(trim($_POST["nombreC"]))
+      );
+      $resQueryObtenerCancion = mysql_query($queryObtenerCancion, $conexionBd) or die ("No se obtuvo la cancion");
+
+      $cancionData = mysql_fetch_assoc($resQueryObtenerCancion);
+
+      $queryRelacionCancionAlbum = sprintf("INSERT INTO rel_cancion_album (idCancion, idAlbum) VALUES ('%d', '%d')",
+        $cancionData["id"],
+        mysql_real_escape_string(trim($_POST["album"]));
+      );
+
+      $resQueryRelacionCancionAlbum = mysql_query($queryRelacionCancionAlbum, $conexionBd) or die ("No se pudo completar la relación en cancion y album");
+
+      $queryRelacionCancionArtista = sprintf("INSERT INTO rel_cancion_artista (idCancion, idArtista) VALUES ('%d', '%d')",
+        $cancionData["id"],
+        mysql_real_escape_string(trim($_POST["artista"]));
+      );
+
+      $resQueryRelacionCancionArtista = mysql_query($queryRelacionCancionArtista, $conexionBd) or die ("No se pudo completar la relación en cancion y artista");
+    
+      if($resQueryRelacionCancionArtista){
+        header("Location:adminadd.php");
+      }
+
+    }
+  
   }
 
 }
