@@ -82,7 +82,7 @@ if(isset($_POST["subirAl"])){
 if(isset($_POST["enviarC"])){
   $path = "audio/"; //file to place within the server
   $actual_image_name = "";
-  foreach ($_POST as $key => $value) {
+  foreach ($_POST as $calzon => $caca) {
     if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 
   }
   if($_FILES["file1"]["name"] != ""){
