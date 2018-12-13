@@ -377,7 +377,7 @@ if(isset($_POST["enviarC"])){
               <h2>Osmar Barraza Flores</h2>
               <p>PREMIUM</p>
               <div class="corner">
-                <div style="dispay:inline-block;"><p>Eliminar</p> <p>Editar</p></div>
+                <div style="dispay:inline-block;"><a href="#"><p>Eliminar</p></a> <a href="#"><p>Editar</p></a></div>
               </div>
             </div>
 
