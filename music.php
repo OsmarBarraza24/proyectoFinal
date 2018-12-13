@@ -52,7 +52,9 @@ if(isset($_POST["logout"])){
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="updateuser.php">Editar perfil</a>
+          <?php if($_SESSION["userPlan"] == "ADMINISTRADOR"){?>
           <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
+          <?php }?>
           <form action="music.php" method="post">
           <input class="logout" type="submit" name="logout" value="Cerrar sesión">
           </form>

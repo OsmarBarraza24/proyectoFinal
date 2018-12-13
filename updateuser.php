@@ -136,7 +136,9 @@ header("Location:music.php");
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="music.php">Inicio</a>
+          <?php if($_SESSION["userPlan"] == "ADMINISTRADOR"){?>
           <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
+          <?php }?>
           <form value="Cerrar sesión" class="logout" action="music.php" method="post">
           <input type="submit" name="logout" value="Cerrar sesión">
           </form>

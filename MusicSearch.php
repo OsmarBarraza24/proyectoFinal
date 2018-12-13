@@ -33,7 +33,9 @@ include('conexion/conexionBd.php');
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="updateuser.php">Editar perfil</a>
+          <?php if($_SESSION["userPlan"] == "ADMINISTRADOR"){?>
           <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
+          <?php }?>
           <form action="music.php" method="post">
           <input class="logout" type="submit" name="logout" value="Cerrar sesión">
           </form>
@@ -54,9 +56,14 @@ include('conexion/conexionBd.php');
               <h2>Busqueda de canciones</h2>
           </div>
       </div>
-      <div class="mlist">
-          <p>Canción</p> <p style="float:rigth">...</p>
+      <div class="row">
+          <div class="col">
+          <div class="mlist">
+          <p>Canción</p> <pre style="float:rigth">...</pre>
       </div>
+          </div>
+      </div>
+     
   </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
