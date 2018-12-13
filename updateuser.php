@@ -159,26 +159,23 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                 </div>
                 <div class="row" style="text-align:center">
                     <div class="col-xs-4 box">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
+                        <p>Crea playlist ilimitadas: Con Gentlefy premium no tienes que preocuparte por tener un numero limitado de playlist.¡Crea y sigue creando!</p>
                     </div>
+                    <i class="far fa-play-circle"></i>
                     <div class="col-xs-4 box">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
+                        <p>Ten un numero ilimitado de canciones en tus playlist: Con Gentlefy premium no tienes porque preocuparte por que canciones vas a poner
+                            en tu playlist, puedes poner de todo un poco sin preocuparte de llenarla.
+                        </p>
                     </div>
                       <div class="col-xs-4 box">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, suscipit a. Numquam quas blanditiis veniam quam, hic cumque molestiae nostrum vero inventore recusandae, architecto fuga neque sed. Consequuntur, odit voluptatum?</p>
+                        <p>Siendo premium, puedes personalizar tus datos una vez creada tus cuentas. ¡Cuantas veces quieras!</p>
                     </div>
                 </div>
-                <?php 
-                if(isset($_FILES["uploadedfile"]["tmp_name"])){
-                    echo $_FILES["uploadedfile"]["tmp_name"];
-
-                }
-                if(isset($error)){
-                    foreach ($error as $key => $value) {
-                        echo $value;
-                    }
-                }
-                ?>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            
+                        </div>
+                    </div>
         </div>
 
 <script src="js/index.js"></script>
