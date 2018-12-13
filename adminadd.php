@@ -1,5 +1,6 @@
 <?php
 session_start();
+if($_SESSION["userPlan"] != "ADMINISTRADOR") header("Location:music.php");
 include("conexion/conexionBd.php");
 if(isset($_GET['enviarA'])){
   if($_GET["nombreA"] == ""){
@@ -80,7 +81,7 @@ if(isset($_POST["subirAl"])){
 }
 
 if(isset($_POST["enviarC"])){
-  $path = "audio/"; //file to place within the server
+  $path = "audios/"; //file to place within the server
   $actual_image_name = "";
   foreach ($_POST as $key => $value) {
     if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 
@@ -153,7 +154,7 @@ if(isset($_POST["enviarC"])){
 if(isset($_GET["busqueda"])){
   $busqueda = "%" . mysql_real_escape_string(trim($_GET["busqueda"])) . "%";
 
-  $queryBuscarUsuario = "SELECT id, nombre, apellidos, plan FROM usuario WHERE nombre = '$busqueda' OR apellidos = '$busqueda'";
+  $queryBuscarUsuario = "SELECT id, nombre, apellidos, plan FROM usuario WHERE nombre LIKE '$busqueda' OR apellidos LIKE '$busqueda'";
   $resQueryBuscarUsuario = mysql_query($queryBuscarUsuario, $conexionBd) or die ("No se pudieron obtener loss datos del usuario");
 
 }
@@ -180,7 +181,6 @@ if(isset($_GET["busqueda"])){
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
@@ -188,10 +188,10 @@ if(isset($_GET["busqueda"])){
         <img style="float:left" class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="music.php">Inicio</a>
+          <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
           <form action="music.php" method="post">
-          <input type="submit" name="logout">
+          <input value="Cerrar sesión" class="logout" type="submit" name="logout">
           </form>
         </div>
       </li>
@@ -262,12 +262,14 @@ if(isset($_GET["busqueda"])){
         <div class="container">
           <div class="row">
             <div class="col">           
-               <span style="margin-left:10px;" id="span"> <img  class="album" src="imagenes/Osmar.jpg" alt=""> <br></span>
-               <div class="upload-btn-wrapper">
-                    <form action="adminadd.php" method="post" enctype = "multipart/form-data">
-                      <button style="margin-top:10px" class="btn">Subir foto</button>
-                      <input  type="file" name="uploadedfile" id="files"/>
-                </div>
+               <span style="margin-left:10px;" id="span"> <img  class="album" src="imagenes/Osmar.jpg" alt=""></span>
+              <div  class="row">
+                 <div style="margin-rigth:10px;" class="upload-btn-wrapper">
+                      <form action="adminadd.php" method="post" enctype = "multipart/form-data">
+                        <button style="margin-top:10px" class="btn">Subir foto</button>
+                        <input  type="file" name="uploadedfile" id="files"/>
+                  </div>
+              </div>
              </div>
              </div>
           <div class="row">
@@ -277,7 +279,7 @@ if(isset($_GET["busqueda"])){
           <label for="generoAl">Genero</label> <br>
           <input type="text" name="generoAl" > <br>
           <label for="artista">Artista</label>
-          <div class="col-xs-12 justify-self-end">
+          <div class="col-xs-12">
           <select style="margin-top:5px;width:280px;border-radius: 20px;" class="dropdown-toggle" name="nombreAr" id="">
               <?php 
               $queryObtenerArtistaForm = "SELECT * FROM artista";
@@ -288,8 +290,7 @@ if(isset($_GET["busqueda"])){
               <option value= <?php echo '"'.$artisData["id"].'"'?>><?php echo $artisData["nombre"]?></option>
               <?php }?>
           </select> <br>
-          </div>
-          
+          </div>          
           <input style="margin-top:25px;margin-left:15px;" type="submit" name="subirAl">
           </form>
             </div>
@@ -381,6 +382,8 @@ if(isset($_GET["busqueda"])){
             </div>
           </div>
         </div>
+        <?php
+            if(isset($_GET["busqueda"])){ ?>
         <div class="row justify-content-center">
           <div class="col-xs-12">
             <h5>Resultados de la busqueda</h5>
@@ -388,9 +391,9 @@ if(isset($_GET["busqueda"])){
           </div>
          </div>
          <hr>
-            <?php 
-            if(!mysq_num_rows($resQueryBuscarUsuario)){
-
+            <?php
+            if(!mysql_num_rows($resQueryBuscarUsuario)){
+                echo "<h3 style='text-align:center;'>No se han encontrado registros</h3>";
             }else{
             while($userData = mysql_fetch_assoc($resQueryBuscarUsuario)){?>
               <div class="searchres">
@@ -405,7 +408,7 @@ if(isset($_GET["busqueda"])){
                   <input type="hidden" value=<?php echo'"'. $userData["id"] .'"'?>>
                 </form>
               </div>
-            <?php }}?>
+            <?php }}}?>
 
 </div>
 </div>

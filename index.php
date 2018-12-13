@@ -11,7 +11,7 @@ if(isset($_POST["sent"])) {
 	// Si no hay errores, definimos el query a ejecutar
 	if(!isset($error)) {
 		// Definimos el query consultar en la BD el email y password del usuario
-		$queryLoginUser = sprintf("SELECT id, correo, nombre, apellidos, foto FROM usuario WHERE correo = '%s' AND contrasenia = '%s'",
+		$queryLoginUser = sprintf("SELECT id, correo, nombre, apellidos, foto ,plan FROM usuario WHERE correo = '%s' AND contrasenia = '%s'",
 			mysql_real_escape_string(trim($_POST["email"])),
 			mysql_real_escape_string(trim($_POST["password"]))
 		);
@@ -28,14 +28,13 @@ if(isset($_POST["sent"])) {
             $_SESSION["userEmail"] = $userData["correo"];
             $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
             $_SESSION["userFoto"] = $userData["foto"];
+            $_SESSION["userPlan"] = $userData["plan"];
 			header("Location: music.php");
 		}
 		else {
 			$errorLog[] = "si";
 		}
-
 	}
-
 }
 ?>
 <!DOCTYPE html>
@@ -44,7 +43,7 @@ if(isset($_POST["sent"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Spatifai</title>
+    <title>Gentlefy</title>
     <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>

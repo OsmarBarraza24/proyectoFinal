@@ -32,10 +32,10 @@ if(isset($_POST["logout"])){
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
     crossorigin="anonymous">
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">
     <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <title>¡Escucha tu música!</title>
 </head>
 <body>
@@ -53,8 +53,8 @@ if(isset($_POST["logout"])){
         <img style="float:left" class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="updateuser.php">Editar perfil</a>
+          <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
           <form action="music.php" method="post">
           <input class="logout" type="submit" name="logout" value="Cerrar sesión">
           </form>
@@ -91,7 +91,9 @@ if(isset($_POST["logout"])){
   </div>
     </div>
   </div>
+                <div class="music-container">
 
+                </div>
 
   <div style="margin-left:127px;" class="footer">
       <div id="amazingaudioplayer-1" style="display:block;position:relative;width:1250px;height:164px;margin:0px auto 0px;float:rigth">
