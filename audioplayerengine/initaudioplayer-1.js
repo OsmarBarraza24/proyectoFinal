@@ -30,7 +30,7 @@ jQuery(document).ready(function(){
 
         tracklistarrowimageheight:16,
 
-        showtime:true,
+        showtime:false,
 
         titleinbarwidth:80,
 
@@ -40,17 +40,17 @@ jQuery(document).ready(function(){
 
         titleformat:"%TITLE%",
 
-        height:164,
+        height:600,
 
-        loopimage:"loop-24-24-1.png",
+        loopimage:"loop-24-24-0.png",
 
-        prevnextimage:"prevnext-48-48-0.png",
+        prevnextimage:"prevnext-24-24-0.png",
 
         showinfo:true,
 
         imageheight:100,
 
-        skin:"MusicBox",
+        skin:"Jukebox",
 
         responsive:true,
 
@@ -58,9 +58,9 @@ jQuery(document).ready(function(){
 
         showstop:false,
 
-        prevnextimageheight:48,
+        prevnextimageheight:24,
 
-        infoformat:"%ARTIST% %ALBUM%",
+        infoformat:"%ARTIST% %ALBUM%<br />%INFO%",
 
         tracklistbackgroundimage:"",
 
@@ -80,17 +80,17 @@ jQuery(document).ready(function(){
 
         showimage:true,
 
-        showloop:false,
+        showloop:true,
 
-        volumeimage:"volume-24-24-1.png",
+        volumeimage:"volume-24-24-0.png",
 
-        playpauseimagewidth:48,
+        playpauseimagewidth:24,
 
         loopimageheight:24,
 
         tracklistitemformat:"<div class='amazingaudioplayer-item-id'>%ID%</div><div class='amazingaudioplayer-item-info'>%DURATION%</div><div class='amazingaudioplayer-item-title'>%TITLE%</div>",
 
-        prevnextimagewidth:48,
+        prevnextimagewidth:24,
 
         titleinbarwidthmode:"fixed",
 
@@ -98,15 +98,15 @@ jQuery(document).ready(function(){
 
         tracklistarrowimagewidth:48,
 
-        playpauseimageheight:48,
+        playpauseimageheight:24,
 
         showbackgroundimage:false,
 
-        stopimage:"stop-48-48-0.png",
+        stopimage:"stop-24-24-0.png",
 
         showvolume:true,
 
-        playpauseimage:"playpause-48-48-0.png",
+        playpauseimage:"playpause-24-24-0.png",
 
         forcehtml5:false,
 
@@ -128,17 +128,17 @@ jQuery(document).ready(function(){
 
         showtitleinbar:false,
 
-        heightmode:"fixed",
+        heightmode:"auto",
 
         titleinbarformat:"%TITLE%",
 
-        showtracklist:false,
+        showtracklist:true,
 
-        stopimageheight:48,
+        stopimageheight:24,
 
         volumeimageheight:24,
 
-        stopimagewidth:48,
+        stopimagewidth:24,
 
         volumebarheight:80,
 
@@ -160,7 +160,7 @@ jQuery(document).ready(function(){
 
         loop:1,
 
-        tracklistitem:10
+        tracklistitem:100
 
     });
 
