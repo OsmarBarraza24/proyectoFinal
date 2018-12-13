@@ -20,8 +20,8 @@ if(isset($_GET['enviarA'])){
   }
 }
 
-if(isset($_GET["subirAl"])){
-  foreach($_GET as $calzon => $caca){		
+if(isset($_POST["subirAl"])){
+  foreach($_POST as $calzon => $caca){		
     if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 		
   }
 
@@ -64,9 +64,9 @@ if(isset($_GET["subirAl"])){
 
   if(!isset($error)){
     $querySubirAlbum = sprintf("INSERT INTO album (nombre, genero, idArtista) VALUES ('%s', '%s', %d)",
-      mysql_real_escape_string(trim($_GET["nombreAl"])),
-      mysql_real_escape_string(trim($_GET["generoAl"])),
-      mysql_real_escape_string(trim($_GET["nombreAr"]))
+      mysql_real_escape_string(trim($_POST["nombreAl"])),
+      mysql_real_escape_string(trim($_POST["generoAl"])),
+      mysql_real_escape_string(trim($_POST["nombreAr"]))
     );
 
     $resQuerySubirAlbum = mysql_query($querySubirAlbum, $conexionBd) or die ("No se puedo agregar album");
@@ -184,7 +184,7 @@ if(isset($_GET["subirAl"])){
             <div class="col">           
                <span style="margin-left:10px;" id="span"> <img  class="album" src="imagenes/Osmar.jpg" alt=""> <br></span>
                <div class="upload-btn-wrapper">
-                    <form action="adminadd.php" method="get" enctype = "multipart/form-data">
+                    <form action="adminadd.php" method="post" enctype = "multipart/form-data">
                       <button style="margin-top:10px" class="btn">Subir foto</button>
                       <input  type="file" name="uploadedfile" id="files"/>
                 </div>
