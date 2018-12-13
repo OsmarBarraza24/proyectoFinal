@@ -82,7 +82,25 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
         header("Location:music.php");
     }
 }
-        ?>
+
+if(isset($_POST["premium"])){
+    $queryUserUpdate = "UPDATE usuario SET plan = 'PREMIUM' WHERE id=".$_SESSION["idUsuario"];
+    $resQueryUserUpdate = mysql_query($queryUserUpdate, $conexionBd) or die ("No se pudo actualizar el plan del usuario");
+
+    if(mysql_num_rows($resQueryGetUser)){
+        $userData = mysql_fetch_assoc($resQueryGetUser);
+        $_SESSION["nombre"] = $userData["nombre"];
+        $_SESSION["apellidos"] = $userData["apellidos"];
+        $_SESSION["idUsuario"] = $userData["id"];
+        $_SESSION["userEmail"] = $userData["correo"];
+        $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
+        $_SESSION["userFoto"] = $userData["foto"];
+        $_SESSION["userPlan"] = $userData["plan"];
+}
+header("Location:music.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -187,7 +205,9 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                 </div>
                     <div class="row justify-content-center">
                         <div class="col-xs-12">
-                            <input type="submit" value="¡Probar premium gratis!">
+                            <form action="updateuser.php" method = "post">
+                            <input type="submit" name = "premium"value="¡Probar premium gratis!">
+                            </form>
                             <br>
                         </div>
                     </div>
