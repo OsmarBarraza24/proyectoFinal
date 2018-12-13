@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include('conexion/conexionBd.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
