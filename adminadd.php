@@ -20,8 +20,8 @@ if(isset($_GET['enviarA'])){
   }
 }
 
-if(isset($_GET["subirAl"])){
-  foreach($_GET as $calzon => $caca){		
+if(isset($_POST["subirAl"])){
+  foreach($_POST as $calzon => $caca){		
     if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 		
   }
 
@@ -63,10 +63,11 @@ if(isset($_GET["subirAl"])){
   }else $error[] = "Es necesario subir una imagen";
 
   if(!isset($error)){
-    $querySubirAlbum = sprintf("INSERT INTO album (nombre, genero, idArtista) VALUES ('%s', '%s', %d)",
-      mysql_real_escape_string(trim($_GET["nombreAl"])),
-      mysql_real_escape_string(trim($_GET["generoAl"])),
-      mysql_real_escape_string(trim($_GET["nombreAr"]))
+    $querySubirAlbum = sprintf("INSERT INTO album (nombre, genero, idArtista, imagen) VALUES ('%s', '%s', %d , '%s')",
+      mysql_real_escape_string(trim($_POST["nombreAl"])),
+      mysql_real_escape_string(trim($_POST["generoAl"])),
+      mysql_real_escape_string(trim($_POST["nombreAr"])),
+      $file_name
     );
 
     $resQuerySubirAlbum = mysql_query($querySubirAlbum, $conexionBd) or die ("No se puedo agregar album");
