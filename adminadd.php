@@ -63,10 +63,11 @@ if(isset($_POST["subirAl"])){
   }else $error[] = "Es necesario subir una imagen";
 
   if(!isset($error)){
-    $querySubirAlbum = sprintf("INSERT INTO album (nombre, genero, idArtista) VALUES ('%s', '%s', %d)",
+    $querySubirAlbum = sprintf("INSERT INTO album (nombre, genero, idArtista, imagen) VALUES ('%s', '%s', %d , '%s')",
       mysql_real_escape_string(trim($_POST["nombreAl"])),
       mysql_real_escape_string(trim($_POST["generoAl"])),
-      mysql_real_escape_string(trim($_POST["nombreAr"]))
+      mysql_real_escape_string(trim($_POST["nombreAr"])),
+      $file_name
     );
 
     $resQuerySubirAlbum = mysql_query($querySubirAlbum, $conexionBd) or die ("No se puedo agregar album");
