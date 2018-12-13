@@ -59,10 +59,11 @@ if(isset($_GET["playlist"])){
         <img style="float:left" class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="updateuser.php">Editar perfil</a>
+          <a class="dropdown-item" href="music.php">Inicio</a>
           <?php if($_SESSION["userPlan"] == "ADMINISTRADOR"){?>
           <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
           <?php }?>
+          <a class="dropdown-item" href="updateuser.php">Editar perfil</a>
           <form action="music.php" method="post">
           <input class="logout" type="submit" name="logout" value="Cerrar sesión">
           </form>

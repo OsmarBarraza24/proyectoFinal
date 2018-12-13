@@ -76,7 +76,7 @@ if(isset($_POST["logout"])){
             <h6>TUS PLAYLIST</h6> 
             <ul>
               <?php while($playListDetail = mysql_fetch_assoc($resQueryGetPlaylist)){?>
-                <li><a href="#"><?php echo $playListDetail["nombre"]?></a></li>
+                <li><a href=<?php echo'"audioplayer.php?playlist='. $playListDetail["id"] .'"'?>><?php echo $playListDetail["nombre"]?></a></li>
               <?php }?> 
               <li id ="AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
             </ul>       
