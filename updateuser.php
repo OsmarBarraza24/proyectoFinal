@@ -118,8 +118,7 @@ header("Location:music.php");
     <link rel="stylesheet" href="css/step.css">
     <link rel="stylesheet" href="css/update.css">
     <link rel="stylesheet" href="css/navbar.css">
-
-
+    
     <title>Actualizar datos</title>
 </head>
 <body>

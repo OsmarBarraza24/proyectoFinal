@@ -115,8 +115,6 @@ if(isset($_POST["logout"])){
 </div>
 </div>
 
-  
-  
   <div style="margin-left:127px;" class="footer">
       <div id="amazingaudioplayer-1" style="display:block;position:relative;width:1250px;height:164px;margin:0px auto 0px;float:rigth">
           <ul class="amazingaudioplayer-audios" style="display:none;">
@@ -132,7 +130,7 @@ if(isset($_POST["logout"])){
           </ul>      
       </div>
 </div>
-</div>
+
 <script src="audioplayerengine/jquery.js"></script>
 <script src="audioplayerengine/amazingaudioplayer.js"></script>
 <script src="audioplayerengine/initaudioplayer-1.js"></script>
