@@ -359,9 +359,9 @@ if(isset($_GET["busqueda"])){
       </h5>
     </div>
     <div id="collapseFour" class=<?php if (isset($_GET["busqueda"])) {
-      echo "collapse show";
+      echo '"collapse show"';
     }else{
-      echo "collapse";
+      echo '"collapse"';
     }
     ?> aria-labelledby="headingFour" data-parent="#accordionExample">
       <div class="card-body">
