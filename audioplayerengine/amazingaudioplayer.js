@@ -1,4 +1,8 @@
-
+/** Amazing Audio Player - HTML5 Audio Player for Your Website
+ * Copyright 2017 Magic Hills Pty Ltd All Rights Reserved
+ * Website: http://amazingaudioplayer.com
+ * Version 3.9 
+ */
 var AmazingAudioPlatforms={flashInstalled:function(){var flashInstalled=false;try{if(new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))flashInstalled=true}catch(e){if(navigator.mimeTypes["application/x-shockwave-flash"])flashInstalled=true}return flashInstalled},html5VideoSupported:function(){return!!document.createElement("video").canPlayType},isChrome:function(){return navigator.userAgent.match(/Chrome/i)!=null},isFirefox:function(){return navigator.userAgent.match(/Firefox/i)!=null},isOpera:function(){return navigator.userAgent.match(/Opera/i)!=
 null},isSafari:function(){return navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)!=null},safariVersion:function(){var safariVersion=0;if(this.isSafari()){var match=navigator.userAgent.match(/Version\/([0-9]+)/);safariVersion=match&&match.length>=2?parseInt(match[1],10):0}return safariVersion},isAndroid:function(){return navigator.userAgent.match(/Android/i)!=null},isIPad:function(){return navigator.userAgent.match(/iPad/i)!=null},isIPhone:function(){return navigator.userAgent.match(/iPod/i)!=
 null||navigator.userAgent.match(/iPhone/i)!=null},isIOS:function(){return this.isIPad()||this.isIPhone()},isMobile:function(){return this.isIPad()||this.isIPhone()||this.isAndroid()},isIE11:function(){return navigator.userAgent.match(/Trident\/7/)!=null&&navigator.userAgent.match(/rv:11/)!=null},isIE:function(){return(navigator.userAgent.match(/MSIE/i)!=null||this.isIE11())&&!this.isOpera()},isIE9:function(){return navigator.userAgent.match(/MSIE 9/i)!=null&&!this.isOpera()},isIE8:function(){return navigator.userAgent.match(/MSIE 8/i)!=

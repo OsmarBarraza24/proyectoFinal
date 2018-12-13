@@ -98,7 +98,7 @@ if(isset($_POST["logout"])){
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="https://pngimage.net/wp-content/uploads/2018/06/notas-musicales-hd-png-2.png" alt="Card image cap">
   <div class="card-body">
-    <a href="#"><h5 style="color:#087CA7;" class="card-title"><?php echo $playlistData[4]?></h5></a>
+    <a href=<?php echo'"audioplayer.php?playlist='.$playlistData[3].'"'?>><h5 style="color:#087CA7;" class="card-title"><?php echo $playlistData[4]?></h5></a>
     <p style="color:#087CA7" class="card-text"><?php echo $playlistData[1]." ".$playlistData[2]?></p>
   </div>
 </div>
