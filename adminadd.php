@@ -128,14 +128,14 @@ if(isset($_POST["enviarC"])){
 
       $queryRelacionCancionAlbum = sprintf("INSERT INTO rel_cancion_album (idCancion, idAlbum) VALUES ('%d', '%d')",
         $cancionData["id"],
-        mysql_real_escape_string(trim($_POST["album"]));
+        mysql_real_escape_string(trim($_POST["album"]))
       );
 
       $resQueryRelacionCancionAlbum = mysql_query($queryRelacionCancionAlbum, $conexionBd) or die ("No se pudo completar la relación en cancion y album");
 
       $queryRelacionCancionArtista = sprintf("INSERT INTO rel_cancion_artista (idCancion, idArtista) VALUES ('%d', '%d')",
         $cancionData["id"],
-        mysql_real_escape_string(trim($_POST["artista"]));
+        mysql_real_escape_string(trim($_POST["artista"]))
       );
 
       $resQueryRelacionCancionArtista = mysql_query($queryRelacionCancionArtista, $conexionBd) or die ("No se pudo completar la relación en cancion y artista");
