@@ -56,17 +56,13 @@ include('conexion/conexionBd.php');
           </div>
       </div>   
   </div>
-  <div class="container">
-    <div class="row ">
-      <div class="col-xs-12">
-      <div class="row justify-content-center">
+  <div class="container">  
+  <div class="row justify-content-center">
         <div class="col-xs-12">
         <div class="mlist">
           <ul>
             <li>Cancion</li>
           </ul>
-      </div>
-        </div>
       </div>
       </div>
     </div>
