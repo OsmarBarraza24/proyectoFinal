@@ -73,7 +73,6 @@ if(isset($_POST["sent"])) {
                          <input value="I N I C I A R    S E S I O N" type="submit" name="sent"> <br>
                              <div class="forgot">
                                 <a href="newUser.php">Crear nueva cuenta</a> <br> <br> 
-                                    <a href="#">¿Olvidaste tu contraseña?</a>
                              </div>                
         </div>    
     </form>
