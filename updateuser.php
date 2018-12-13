@@ -66,7 +66,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
   
 
     if ($resQueryUserUpdate) {
-        $queryGetUser = sprintf("SELECT id, nombre, apellidos, correo, foto FROM usuario WHERE id =". $_SESSION["idUsuario"]);
+        $queryGetUser = sprintf("SELECT id, nombre, apellidos, correo, foto, plan FROM usuario WHERE id =". $_SESSION["idUsuario"]);
 
 		$resQueryGetUser = mysql_query($queryGetUser, $conexionBd) or die("No se ejecutó el query en la base de datos");
 		if(mysql_num_rows($resQueryGetUser)){
@@ -77,6 +77,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
                 $_SESSION["userEmail"] = $userData["correo"];
                 $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
                 $_SESSION["userFoto"] = $userData["foto"];
+                $_SESSION["userPlan"] = $userData["plan"];
         }
         header("Location:music.php");
     }
@@ -89,9 +90,10 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/step.css">
     <link rel="stylesheet" href="css/update.css">
+    <link rel="stylesheet" href="css/navbar.css">
+
 
     <title>Actualizar datos</title>
 </head>
@@ -102,11 +104,22 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-    <div > <img style="float:left" class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> </div>
-    <p style="color:white; padding-top:12px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]  ?></p>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img style="float:left" class="img" src= <?php echo'"imagenes/'.$_SESSION["userFoto"].'"'?> alt=""> 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <form class="logout" action="music.php" method="post">
+          <input type="submit" name="logout">
+          </form>
+        </div>
+      </li>
+    <div > </div>
+    <p style="color:white; padding-top:16px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]  ?></p>
       </ul>
       <ul class="nav navbar-nav navbar-center">
         <form class="form-inline my-2 my-lg-0">

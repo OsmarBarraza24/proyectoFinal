@@ -59,8 +59,6 @@ input[type=text]{
     border: 1px solid rgb(87, 87, 87);
 }
 
-
-
 input[type=submit]{
     border-radius: 20px;
     font-size: 18px;
@@ -118,7 +116,7 @@ input[type=submit]{
         -moz-box-sizing: content-box;
         box-sizing: content-box;
         width: 1117px;
-        height: 200px;
+        height: 220px;
         border-bottom: 2px solid blue;
         color: black;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;

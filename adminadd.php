@@ -1,5 +1,6 @@
 <?php
 session_start();
+if($_SESSION["userPlan"] != "ADMINISTRADOR") header("Location:music.php");
 include("conexion/conexionBd.php");
 if(isset($_GET['enviarA'])){
   if($_GET["nombreA"] == ""){
@@ -80,7 +81,7 @@ if(isset($_POST["subirAl"])){
 }
 
 if(isset($_POST["enviarC"])){
-  $path = "audio/"; //file to place within the server
+  $path = "audios/"; //file to place within the server
   $actual_image_name = "";
   foreach ($_POST as $key => $value) {
     if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 
@@ -153,7 +154,7 @@ if(isset($_POST["enviarC"])){
 if(isset($_GET["busqueda"])){
   $busqueda = "%" . mysql_real_escape_string(trim($_GET["busqueda"])) . "%";
 
-  $queryBuscarUsuario = "SELECT id, nombre, apellidos, plan FROM usuario WHERE nombre = '$busqueda' OR apellidos = '$busqueda'";
+  $queryBuscarUsuario = "SELECT id, nombre, apellidos, plan FROM usuario WHERE nombre LIKE '$busqueda' OR apellidos LIKE '$busqueda'";
   $resQueryBuscarUsuario = mysql_query($queryBuscarUsuario, $conexionBd) or die ("No se pudieron obtener loss datos del usuario");
 
 }
@@ -180,7 +181,6 @@ if(isset($_GET["busqueda"])){
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
@@ -381,6 +381,8 @@ if(isset($_GET["busqueda"])){
             </div>
           </div>
         </div>
+        <?php
+            if(isset($_GET["busqueda"])){ ?>
         <div class="row justify-content-center">
           <div class="col-xs-12">
             <h5>Resultados de la busqueda</h5>
@@ -388,9 +390,9 @@ if(isset($_GET["busqueda"])){
           </div>
          </div>
          <hr>
-            <?php 
-            if(!mysq_num_rows($resQueryBuscarUsuario)){
-
+            <?php
+            if(!mysql_num_rows($resQueryBuscarUsuario)){
+                echo "<h3 style='text-align:center;'>No se han encontrado registros</h3>";
             }else{
             while($userData = mysql_fetch_assoc($resQueryBuscarUsuario)){?>
               <div class="searchres">
@@ -405,7 +407,7 @@ if(isset($_GET["busqueda"])){
                   <input type="hidden" value=<?php echo'"'. $userData["id"] .'"'?>>
                 </form>
               </div>
-            <?php }}?>
+            <?php }}}?>
 
 </div>
 </div>

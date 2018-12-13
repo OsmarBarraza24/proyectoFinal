@@ -65,6 +65,7 @@ if(move_uploaded_file ($_FILES["uploadedfile"]["tmp_name"], $add)){
         $_SESSION["userEmail"] = $userData["correo"];
         $_SESSION["userNombreCompleto"] = $userData["nombre"]. " ". $userData["apellidos"];
         $_SESSION["userFoto"] = $userData["foto"];
+        $_SESSION["userPlan"] = $userData["plan"];
 			}
 			header("Location:music.php");
 		} 
