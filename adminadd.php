@@ -303,13 +303,13 @@ if(isset($_POST["enviarC"])){
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <form action="adminadd.phph" method="get" enctype = "multipart/form-data">
+                  <form action="adminadd.php" method="post" enctype = "multipart/form-data">
                     <label for="">Nombre de la canción</label> <br>
                     <input type="text" name="nombreC"> <br>
                     <label for="subir">Subir canción</label> <br>
                     <div style="width:280px;" class="upload-btn-wrapper">
                       <button style="margin-top:5px" class="btn">Subir canción</button>
-                      <input  type="file" name="file" accept = ".ogg,.flac,.mp3"id="files"/>
+                      <input  type="file" name="file1" accept = ".ogg,.flac,.mp3"id="files"/>
                       </div> 
                       <br>
                     <label for="">Album al que pertenece</label> <br>
