@@ -229,10 +229,65 @@ if(isset($_POST["subirAl"])){
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <form action="adminadd.phph" method="get" enctype = "multipart/form-data">
+                    <label for="">Nombre de la canción</label> <br>
+                    <input type="text" name="nombreC"> <br>
+                    <label for="subir">Subir canción</label> <br>
+                    <div style="width:280px;" class="upload-btn-wrapper">
+                      <button style="margin-top:5px" class="btn">Subir canción</button>
+                      <input  type="file" name="uploadedfile" id="files"/>
+                      </div> 
+                      <br>
+                    <label for="">Album al que pertenece</label> <br>
+                    <select style="width:250px" name="album" id="">
+                      <option value="">Album</option>
+                    </select> <br>
+                    <label for="">Artista al que pertenece</label> <br>
+                    <select style="width:250px" name="artista" id="">
+                      <option value="">Artista</option>
+                    </select><br>
+                    <input  style="margin-top:10px" type="submit" name="enviarC">
+                  </form>
+                </div>
+              </div>
+            </div>
       </div>
     </div>
   </div>
+
+  <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+          Desplegar usuarios registrados
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="containter">
+          <div class="row justify-content-center">
+            <div class="col-xs-12">
+                <h5>Usuarios registrados</h5>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <h4>Buscar usuarios</h4>
+              <input type="text" name="busqueda">
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xs-12">
+            <h5>Resultados de la busqueda</h5>
+          </div>
+</div>
+          <hr>        
+        </div>
 </div>
 </div>
 <script src="js/adminimg.js"></script>
