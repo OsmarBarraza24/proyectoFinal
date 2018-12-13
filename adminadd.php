@@ -150,6 +150,14 @@ if(isset($_POST["enviarC"])){
 
 }
 
+if(isset($_GET["busqueda"])){
+  $busqueda = "%" . mysql_real_escape_string(trim($_GET["busqueda"])) . "%";
+
+  $queryBuscarUsuario = "SELECT id, nombre, apellidos, plan FROM usuario WHERE nombre = '$busqueda' OR apellidos = '$busqueda'";
+  $resQueryBuscarUsuario = mysql_query($queryBuscarUsuario, $conexionBd) or die ("No se pudieron obtener loss datos del usuario");
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -350,7 +358,12 @@ if(isset($_POST["enviarC"])){
         </button>
       </h5>
     </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+    <div id="collapseFour" class=<?php if (isset($_GET["busqueda"])) {
+      echo "collapse show";
+    }else{
+      echo "collapse";
+    }
+    ?> aria-labelledby="headingFour" data-parent="#accordionExample">
       <div class="card-body">
         <div class="containter">
           <div class="row justify-content-center">
@@ -361,8 +374,10 @@ if(isset($_POST["enviarC"])){
           <hr>
           <div class="row">
             <div class="col">
-              <h4>Buscar usuarios</h4>
-              <input type="text" name="busqueda">
+                <h4>Buscar usuarios</h4>
+                <form action="adminadd.php" method="get">
+                  <input type="text" name="busqueda">
+                </form>
             </div>
           </div>
         </div>
@@ -373,12 +388,24 @@ if(isset($_POST["enviarC"])){
           </div>
          </div>
          <hr>
-            <div class="searchres">
-              <h2>Osmar Barraza Flores</h2>
-              <p>PREMIUM</p>
-              <input type="submit" value="Editar"> <br>
-              <input style="margin-top:10px;" type="submit" value="Eliminar">
-            </div>
+            <?php 
+            if(!mysq_num_rows($resQueryBuscarUsuario)){
+
+            }else{
+            while($userData = mysql_fetch_assoc($resQueryBuscarUsuario)){?>
+              <div class="searchres">
+                <h2><?php echo $userData["nombre"]. " ". $userData["apellidos"]?></h2>
+                <p><?php echo $userData["plan"]?></p>
+                <form action="">
+                  <input type="submit" value="Editar">
+                  <input type="hidden" value=<?php echo'"'. $userData["id"] .'"'?>>
+                </form> <br>
+                <form action="adminadd.php" method = "get">
+                  <input style="margin-top:10px;" type="submit" value="Eliminar">
+                  <input type="hidden" value=<?php echo'"'. $userData["id"] .'"'?>>
+                </form>
+              </div>
+            <?php }}?>
 
 </div>
 </div>
