@@ -156,7 +156,15 @@ if(isset($_GET["busqueda"])){
 
   $queryBuscarUsuario = "SELECT id, nombre, apellidos, plan FROM usuario WHERE nombre LIKE '$busqueda' OR apellidos LIKE '$busqueda'";
   $resQueryBuscarUsuario = mysql_query($queryBuscarUsuario, $conexionBd) or die ("No se pudieron obtener loss datos del usuario");
+}
 
+if(isset($_GET["Eliminar"])){
+  $queryEliminarUsuario = "DELETE FROM usuario WHERE id=".$_GET["idUsuario"];
+  $resQueryElimnarUsuario = mysql_query($queryEliminarUsuario, $conexionBd) or die ("No se ha podido eliminar el usuario");
+
+  if ($resQueryElimnarUsuario) {
+    header("Location:adminadd.php");
+  }
 }
 
 ?>
@@ -404,8 +412,8 @@ if(isset($_GET["busqueda"])){
                   <input type="hidden" value=<?php echo'"'. $userData["id"] .'"'?>>
                 </form> <br>
                 <form action="adminadd.php" method = "get">
-                  <input style="margin-top:10px;" type="submit" value="Eliminar">
-                  <input type="hidden" value=<?php echo'"'. $userData["id"] .'"'?>>
+                  <input style="margin-top:10px;" type="submit" name = "Eliminar" value="Eliminar">
+                  <input type="hidden" name = "idUsuario"value=<?php echo'"'. $userData["id"] .'"'?>>
                 </form>
               </div>
             <?php }}}?>
