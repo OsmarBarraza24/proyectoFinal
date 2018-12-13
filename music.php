@@ -56,7 +56,7 @@ if(isset($_POST["logout"])){
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <form action="music.php" method="post">
-          <input type="submit" name="logout">
+          <input class="logout" type="submit" name="logout" value="Cerrar sesión">
           </form>
         </div>
       </li>
@@ -93,8 +93,8 @@ if(isset($_POST["logout"])){
   </div>
 
 
-  <div class="footer">
-      <div id="amazingaudioplayer-1" style="display:block;position:relative;width:80%;height:164px;margin:0px auto 0px;float:rigth">
+  <div style="margin-left:127px;" class="footer">
+      <div id="amazingaudioplayer-1" style="display:block;position:relative;width:1250px;height:164px;margin:0px auto 0px;float:rigth">
           <ul class="amazingaudioplayer-audios" style="display:none;">
               <li data-artist="" data-title="Love of Lesbian - Contraespionaje (Lyric Video)" data-album="" data-info="" data-image="" data-duration="313">
                   <div class="amazingaudioplayer-source" data-src="audios/Contraespionaje.mp3" data-type="audio/mpeg" ></div>

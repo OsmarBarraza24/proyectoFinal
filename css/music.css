@@ -69,11 +69,14 @@ a:hover{
 }
 
 .dropdown-item{
-    background:black;
+    background:#f1f1f1;
+}
+.dropdown-item:hover{
+    background:grey;
 }
 
 .dropdown-menu{
-    background: black;
+    background: #f1f1f1;
 }
 
 
@@ -125,3 +128,18 @@ a:hover{
   .card{
       width: 100%;
   }
+
+  .logout{
+      height: 25px;
+      width: 120px;
+      color: #011638!important;
+      margin-left: 10px;
+      background:transparent;
+      border:1px solid #f1f1f1;
+      cursor: pointer;
+      transition: 500ms;
+  }
+
+  .logout:hover{
+  background: grey;
+}
