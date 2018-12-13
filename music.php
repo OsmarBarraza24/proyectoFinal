@@ -71,17 +71,12 @@ if(isset($_POST["logout"])){
    <div class="scrollbar" id="style-2">
       <div id="bottom">
         <div class="container-bot">
-          <h6 class="name">TU BIBLIOTECA</h6>
-            <ul>
-               <li><i class="fas fa-music"></i> Canciones favoritas</li>
-              <li><i class="fas fa-male"></i> Artistas favoritos</li>
-            </ul> 
             <h6>TUS PLAYLIST</h6> 
             <ul>
               <?php while($playListDetail = mysql_fetch_assoc($resQueryGetPlaylist)){?>
                 <li><a href="#"><?php echo $playListDetail["nombre"]?></a></li>
               <?php }?> 
-              <li id = "AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
+              <li id ="AgregarPlaylist"><i class="fas fa-plus-circle"></i>Añadir playlist</li>
             </ul>       
         </div>
       </div>
@@ -89,49 +84,29 @@ if(isset($_POST["logout"])){
   </div>
     </div>
   </div>
-
+  
 <div class="music-container">
+<?php 
+  $queryGetPlaylistCreador = "SELECT usuario.id, usuario.nombre, usuario.apellidos, playlist.id, playlist.nombre FROM playlist 
+  INNER JOIN usuario ON playlist.idUsuario = usuario.id WHERE idUsuario=25";
+
+  $resQueryGetPlaylistCreador = mysql_query($queryGetPlaylistCreador, $conexionBd) or die ("No se pudo realizar el query del inner join de playlist con usuario");
+
+  while($playlistData = mysql_fetch_array($resQueryGetPlaylistCreador)){
+  
+?>
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="imagenes/poetaHalley.jpg" alt="Card image cap">
+  <img class="card-img-top" src="https://pngimage.net/wp-content/uploads/2018/06/notas-musicales-hd-png-2.png" alt="Card image cap">
   <div class="card-body">
-    <a href="#"><h5 style="color:#087CA7;" class="card-title">Nombre de playlist</h5></a>
-    <p style="color:#087CA7" class="card-text">Breve descripción de la playlist</p>
+    <a href="#"><h5 style="color:#087CA7;" class="card-title"><?php echo $playlistData[4]?></h5></a>
+    <p style="color:#087CA7" class="card-text"><?php echo $playlistData[1]." ".$playlistData[2]?></p>
   </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="imagenes/poetaHalley.jpg" alt="Card image cap">
-  <div class="card-body">
-    <a href="#"><h5 style="color:#087CA7;" class="card-title">Nombre de playlist</h5></a>
-    <p style="color:#087CA7" class="card-text">Breve descripción de la playlist</p>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="imagenes/poetaHalley.jpg" alt="Card image cap">
-  <div class="card-body">
-    <a href="#"><h5 style="color:#087CA7;" class="card-title">Nombre de playlist</h5></a>
-    <p style="color:#087CA7" class="card-text">Breve descripción de la playlist</p>
-  </div>
-</div>
-</div>
 </div>
 
-  
-  
-  <div style="margin-left:127px;" class="footer">
-      <div id="amazingaudioplayer-1" style="display:block;position:relative;width:1250px;height:164px;margin:0px auto 0px;float:rigth">
-          <ul class="amazingaudioplayer-audios" style="display:none;">
-              <li data-artist="" data-title="Love of Lesbian - Contraespionaje (Lyric Video)" data-album="" data-info="" data-image="" data-duration="313">
-                  <div class="amazingaudioplayer-source" data-src="audios/Contraespionaje.mp3" data-type="audio/mpeg" ></div>
-              </li>
-              <li data-artist="" data-title="Love of Lesbian - El poeta Halley (Lyric Video)" data-album="" data-info="" data-image="" data-duration="445">
-                  <div class="amazingaudioplayer-source" data-src="audios/ElPoetaHalley.mp3" data-type="audio/mpeg" ></div>
-              </li>
-              <li data-artist="Love of lesbian" data-title="Planeador" data-album="Psiconautas" data-info="A" data-image="" data-duration="337">
-                  <div class="amazingaudioplayer-source" data-src="audios/Planeador.mp3" data-type="audio/mpeg" ></div>
-              </li>
-          </ul>      
-      </div>
+<?php }?>
+
 </div>
+
 </div>
 <script src="audioplayerengine/jquery.js"></script>
 <script src="audioplayerengine/amazingaudioplayer.js"></script>
