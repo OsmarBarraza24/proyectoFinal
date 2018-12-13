@@ -79,6 +79,47 @@ if(isset($_POST["subirAl"])){
   }
 }
 
+if(isset($_POST["enviarC"])){
+  $path = "audio/"; //file to place within the server
+  $actual_image_name = "";
+  foreach ($_POST as $key => $value) {
+    if($caca == "" && $calzon != "enviarAl")  $error[] = "El campo $calzon debe contener un valor"; 
+  }
+  if($_FILES["file1"]["name"] != ""){
+    $valid_formats1 = array("mp3", "ogg", "flac"); //list of file extention to be accepted
+    if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        $file1 = $_FILES['file1']['name']; //input file name in this code is file1
+
+        if(strlen($file1))
+            {
+                list($txt, $ext) = explode(".", $file1);
+                if(in_array($ext,$valid_formats1))
+                {
+                        $actual_image_name = $txt.".".$ext;
+                        $tmp = $_FILES['file1']['tmp_name'];
+                        if(move_uploaded_file($tmp, $path.$actual_image_name))
+                            {
+                            //success upload
+                            }
+                        else
+                            echo "failed";              
+                    }
+        }
+    }
+  }else{
+    $error[] = "Es necesario que se suba un archivo para la cancion";
+  }
+  
+  if (!isset($error)) {
+    $querySubirCancion = sprintf("INSERT INTO cancion (nombre, ruta) VALUES ('%s', '%s')",
+      mysql_real_escape_string(trim($_POST["nombreC"])),
+      mysql_real_escape_string(trim($actual_image_name))
+    );
+  }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -238,16 +279,30 @@ if(isset($_POST["subirAl"])){
                     <label for="subir">Subir canción</label> <br>
                     <div style="width:280px;" class="upload-btn-wrapper">
                       <button style="margin-top:5px" class="btn">Subir canción</button>
-                      <input  type="file" name="uploadedfile" id="files"/>
+                      <input  type="file" name="file" accept = ".ogg,.flac,.mp3"id="files"/>
                       </div> 
                       <br>
                     <label for="">Album al que pertenece</label> <br>
                     <select style="width:250px" name="album" id="">
-                      <option value="">Album</option>
+                        <?php 
+                          $queryObtenerAlbumForm = "SELECT id, nombre FROM album";
+                          $resQueryObtenerAlbumForm = mysql_query($queryObtenerAlbumForm, $conexionBd) or die ("No se realizó la consulta en el form");
+                          
+                          while($artisData = mysql_fetch_assoc($resQueryObtenerAlbumForm)){
+                        ?>
+                        <option value= <?php echo '"'.$artisData["id"].'"'?>><?php echo $artisData["nombre"]?></option>
+                        <?php }?>
                     </select> <br>
                     <label for="">Artista al que pertenece</label> <br>
                     <select style="width:250px" name="artista" id="">
-                      <option value="">Artista</option>
+                        <?php 
+                          $queryObtenerArtistaForm = "SELECT id, nombre FROM artista";
+                          $resQueryObtenerArtistaForm = mysql_query($queryObtenerArtistaForm, $conexionBd) or die ("No se realizó la consulta en el form");
+                          
+                          while($artisData = mysql_fetch_assoc($resQueryObtenerArtistaForm)){
+                        ?>
+                        <option value= <?php echo '"'.$artisData["id"].'"'?>><?php echo $artisData["nombre"]?></option>
+                        <?php }?>
                     </select><br>
                     <input  style="margin-top:10px" type="submit" name="enviarC">
                   </form>
