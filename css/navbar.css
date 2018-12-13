@@ -35,3 +35,17 @@ i{
 .fa-search{
 color: white;
 }
+
+.mlist{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 500px;
+    height: 25px;
+    border: 2px solid rgba(0,150,255,0.91);
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
