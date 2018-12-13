@@ -139,7 +139,7 @@ header("Location:music.php");
           <a class="dropdown-item" href="music.php">Inicio</a>
           <a class="dropdown-item" href="adminadd.php">Opciones de administrador</a>
           <form value="Cerrar sesión" class="logout" action="music.php" method="post">
-          <input type="submit" name="logout">
+          <input type="submit" name="logout" value="Cerrar sesión">
           </form>
         </div>
       </li>
@@ -180,14 +180,16 @@ header("Location:music.php");
                                     <label for="">Apellidos</label> <br>
                                     <input style="text-align:center;" value="<?php echo $_SESSION['apellidos'];?>"type="text" name="apellidos"><br>                 
                                     <label for="">Correo</label> <br>
-                                    <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userEmail'];?>" type="text" name="apellidos""> 
+                                    <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userEmail'];?>" type="text" name="apellidos""> <br> 
+                                    <label for="plan">Tipo de cuenta</label> <br>
+                                    <input  style="text-align:center;" disabled type="text" value="<?php echo $_SESSION['userPlan'];?>" type="text" name="plan"">  <br>
                                         <div style="margin-left:22px; margin-top:15px;">   
                                         <input style="margin-top:15px;" type="submit" name="sent" value="Actualizar datos"> <br> <br>                                                                                                 
                             </div>              
                         </form>
                         <div class="row">
                         <div class="col">
-                        <form action="updateuser.php" method="get"><input style="background:red;border:1px solid red" style="margin-top:15px;margin-left:10px;" type="submit" name="delete" value="Eliminar cuenta"></form>
+                        <form action="updateuser.php" method="get"><input style="background:red;border:1px solid red" style="margin-top:15px;margin-left:20px;" type="submit" name="delete" value="Eliminar cuenta"></form>
                         </div>
                         </div>
             </div>
