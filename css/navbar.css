@@ -49,3 +49,23 @@ color: white;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
+
+.shuy{
+    font-size:18;
+    text-align: center;
+}
+
+ul{
+    height: 50px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    list-style: none;
+    color: black;
+}
+
+.carajo{
+    margin-top:4rem;
+    height: 100%;
+}

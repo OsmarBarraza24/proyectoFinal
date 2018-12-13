@@ -63,8 +63,9 @@ if(isset($_POST["logout"])){
     <p style="color:white; padding-top:16px;margin-left:10px;"> <?php echo $_SESSION["userNombreCompleto"]  ?></p>
       </ul>
       <ul class="nav navbar-nav navbar-center">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2 input-field" type="search" placeholder="Buscar" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="MusicSearch.php" method="get">
+          <input class="form-control mr-sm-2 input-field" type="text" name = "busqueda" placeholder="Buscar" aria-label="Search">
+            <input type="hidden" value = "2" name="Si">
         </form>
       </ul>
     </div>

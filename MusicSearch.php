@@ -1,6 +1,30 @@
 <?php 
 session_start();
 include('conexion/conexionBd.php');
+
+if(isset($_GET["busqueda"])){
+  $busqueda = "%".mysql_real_escape_string(trim($_GET["busqueda"]))."%";
+
+  $queryBuscarCancion = "SELECT id, nombre FROM cancion WHERE nombre LIKE '$busqueda'";
+
+  $resQueryBuscarCancion = mysql_query($queryBuscarCancion, $conexionBd) or die ("No se realizó la busqueda");
+
+
+  
+}
+if(isset($_GET["idPlaylist"])){
+  $queryInsertRelPlaylist = sprintf("INSERT INTO rel_cancion_playlist (idCancion, idPlaylist) VALUES (%d, %d)",
+    mysql_real_escape_string(trim($_GET["idCancion"])),
+    mysql_real_escape_string(trim($_GET["idPlaylist"]))
+  );
+
+  $resQ = mysql_query($queryInsertRelPlaylist, $conexionBd) or die("Nelson");
+
+  if($resQ){
+    header("Location:music.php");
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -56,16 +80,38 @@ include('conexion/conexionBd.php');
           </div>
       </div>   
   </div>
-  <div class="container">  
-  <div class="row justify-content-center">
-        <div class="col-xs-12">
-        <div class="mlist">
-          <ul>
-            <li>Cancion</li>
-          </ul>
-      </div>
-      </div>
-    </div>
+
+  <div class="carajo">
+  <ul>
+    <?php 
+    if(isset($_GET["busqueda"])){
+    while($dataCancion = mysql_fetch_assoc($resQueryBuscarCancion)){?>
+    <li>
+      <?php 
+      echo $dataCancion["nombre"];
+ 
+      ?>
+    </li>
+    <div style="margin-left:80%;" class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" style="width:100px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Playlist
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <?php
+         
+         $queryObtenerPlaylist = "SELECT id, nombre FROM playlist WHERE idUsuario=". $_SESSION["idUsuario"];
+
+         $resQueryObtenerPlaylist = mysql_query($queryObtenerPlaylist, $conexionBd) or die("No se pudieron obtener las playlist");
+   
+        while($playlistData = mysql_fetch_assoc($resQueryObtenerPlaylist)){
+      ?>
+    <a class="dropdown-item" href=<?php echo '"MusicSearch.php?idPlaylist='. $playlistData["id"] .'&idCancion='. $dataCancion["id"] .'"'?>><?php echo $playlistData["nombre"]?></a>
+      <?php }?>
+  </div>
+  </div>
+  
+  <?php }} ?>
+    </ul>
   </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
